@@ -148,6 +148,32 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .stat span{font-family:Cinzel,serif;font-size:13px;padding:5px 10px;border-radius:6px;border:1px solid var(--goldDim);background:#16121b}
 .stat span:after{content:" ›";color:var(--goldDim)}
 .stat span:last-child:after{content:""}
+.lvgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px;margin-top:10px}
+.lvrow{display:flex;gap:10px;align-items:center;padding:7px 10px;border-radius:8px;background:#120f16;border:1px solid var(--edge);cursor:pointer;text-align:left;color:var(--ink);font:inherit;font-size:14px;width:100%}
+.lvrow:hover{border-color:var(--goldDim);background:#1a1520}
+.lvrow .n{font-family:Cinzel,serif;font-weight:900;color:var(--gold2);font-size:18px;min-width:28px;text-align:center}
+.lvrow .z{font-family:Cinzel,serif;font-size:12px;color:#c9b7ff;display:block}
+.lvrow.cur{border-color:var(--arc);background:rgba(176,124,255,.14);box-shadow:0 0 14px rgba(176,124,255,.25)}
+.lvrow.past{opacity:.5}
+.lvrow .alt{font-size:12px;color:var(--muted)}
+.card.click{cursor:pointer;transition:.15s}.card.click:hover{border-color:var(--goldDim);background:#1a1520}
+.card .cnt{margin-left:auto;font-family:Cinzel,serif;font-size:12px;color:var(--gold2)}
+.back{font-family:Cinzel,serif;border:1px solid var(--goldDim);background:#1a1520;color:var(--gold2);border-radius:8px;padding:8px 14px;cursor:pointer;margin-bottom:12px}
+.back:hover{background:#2a2132}
+.ehead{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.ehead h2{margin:0}
+.src{font-size:12.5px;color:var(--muted);margin-top:6px}
+.src a{color:var(--gold)}
+.warn{margin-top:10px;padding:8px 12px;border-radius:8px;border:1px dashed #2c6aa3;background:rgba(44,106,163,.1);font-size:13.5px}
+.qlist{list-style:none;padding:0;margin:0;counter-reset:q}
+.qlist li{counter-increment:q;display:grid;grid-template-columns:26px 22px 1fr;gap:8px;align-items:start;padding:8px 10px;margin-bottom:6px;border-radius:8px;background:#120f16;border:1px solid var(--edge);cursor:pointer}
+.qlist li:before{content:counter(q);font-family:Cinzel,serif;font-weight:700;color:var(--gold2);text-align:right;padding-top:1px}
+.qlist li input{margin-top:4px;accent-color:var(--arc);width:16px;height:16px}
+.qlist li.ok{opacity:.5}.qlist li.ok span{text-decoration:line-through}
+.qlist b{color:#f1e4ff}
+.plain{margin:0;padding-left:18px}.plain li{margin:4px 0}
+.enav{display:flex;justify-content:space-between;gap:10px;margin-top:4px}
+.enav button{flex:1}
 footer{margin-top:24px;color:var(--muted);font-size:12.5px;text-align:center}
 footer a{color:var(--gold)}
 @media (max-width:820px){.trees{grid-template-columns:repeat(3,280px)}}
@@ -200,11 +226,21 @@ footer a{color:var(--gold)}
   <!-- ROUTE -->
   <section class="view" id="v-route">
     <div class="panel">
-      <h2>Route Alliance 30 → 60</h2>
-      <div class="muted small">Coche les étapes au fur et à mesure. Les tranches de niveau sont souples : il n'y a pas de mise à l'échelle, donc vérifie toujours le niveau des quêtes avant une chaîne.</div>
-      <div class="prog"><i id="progbar"></i></div>
-      <div class="route" id="route"></div>
+      <h2>Niveau par niveau</h2>
+      <div class="muted small">Clique sur un niveau pour ouvrir la page de la zone, avec les quêtes à faire dans l'ordre. Ton niveau actuel (celui de l'onglet Talents) est surligné.</div>
+      <div class="lvgrid" id="lvgrid"></div>
     </div>
+    <div class="panel">
+      <h2>Toutes les étapes</h2>
+      <div class="muted small">Les tranches se chevauchent : il n'y a pas de mise à l'échelle, donc vérifie le niveau des quêtes avant une chaîne. Le compteur montre les quêtes cochées sur chaque page.</div>
+      <div class="prog"><i id="progbar"></i></div>
+      <div class="route" id="routelist"></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-etape">
+    <button class="back" id="back">← Retour à la route</button>
+    <div id="etape"></div>
   </section>
 
   <!-- ROTATION -->
@@ -308,7 +344,7 @@ footer a{color:var(--gold)}
   </footer>
 </div>
 <div id="tip"></div>
-
+<script src="steps.js"></script>
 <script>
 (function(){
 "use strict";
@@ -496,45 +532,66 @@ slider.addEventListener('input',function(){setLevel(+slider.value);});
 document.getElementById('minus').onclick=function(){setLevel(level-1);};
 document.getElementById('plus').onclick=function(){setLevel(level+1);};
 
-/* ---------- Route ---------- */
-var ROUTE=[
- {lv:"30-31",z:"Austrivage (contreforts de Hautebrande)",d:"Quêtes d'Austrivage et quête du donjon de Dalaran auprès de l'émissaire Jacques. Moulin-de-Tarren (Horde) est tout près, reste vigilant.",t:[["pvp","Zone contestée"]]},
- {lv:"30-33",z:"Cité de Dalaran",d:"Donjon dans les montagnes d'Alterac, entrée par les égouts. À faire tant que tu es dans la tranche.",t:[["new","Nouveau donjon"],["dj","Groupe"]]},
- {lv:"30-35",z:"Hautes-terres d'Arathi",d:"Base au Refuge de l'Ornière, pas de quête préliminaire. Prends le point de vol et toutes les quêtes du refuge. Garde les finales de groupe pour la fin.",t:[]},
- {lv:"32-34",z:"Salines de Mille Pointes",d:"Option : les quêtes neutres de la course de Mirage. Beaucoup de Horde dans la zone, pas de village Alliance proche.",t:[["opt","Optionnel"],["pvp","Risqué"]]},
- {lv:"30-40",z:"Monastère écarlate",d:"Option donjon : 4 ailes de 30 à 40+. L'entrée est dans les Clairières de Tirisfal, en territoire Horde, donc à faire en groupe.",t:[["dj","Groupe"],["pvp","Risqué"]]},
- {lv:"35-40",z:"Rives Claires",d:"Nouvelle zone, près de 200 quêtes entre 35 et 45. Pour l'Alliance, on y entre à pied : route nord du Comté-du-Lac (Carmines), puis à droite à la fourche avant les Steppes ardentes. Prends le point de vol à Fort-Lointain (Farholde Keep), au sud-est.",t:[["new","Nouvelle zone"],["pvp","Contestée"]]},
- {lv:"35-40",z:"La cité Submergée",d:"Donjon au large de Strangleronce, à l'ouest de Grom'gol. L'entrée est sous l'eau.",t:[["new","Nouveau donjon"],["dj","Groupe"]]},
- {lv:"40",z:"Retour en capitale",d:"Monture, double spécialisation, portails. Passe tous tes rangs de sorts. Pouvoir des arcanes arrive au 43.",t:[["mile","Palier clé"]]},
- {lv:"40-45",z:"Fin des Rives Claires + Bastion Krol'dok",d:"Termine les chaînes de la zone, puis le donjon Bastion Krol'dok (40-45).",t:[["new","Nouveau donjon"]]},
- {lv:"~43-50",z:"Shen'dralas",d:"Nouvelle zone entre Mulgore et Désolace (Shen'dralar, centaures). Blizzard n'a pas donné son niveau : les guides la placent entre 40 et 55. Ses quêtes mènent à Maraudon et aux Souilles de Tranchebauge.",t:[["new","Nouvelle zone"],["opt","Niveau non officiel"]]},
- {lv:"43-47",z:"Tanaris, Feralas ou Hinterlands",d:"Bases à Gadgetzan, au Bastion de Plumelune ou au Nid-de-l'Aigle. Palier d'Héritage au niveau 45.",t:[["mile","Héritage 45"]]},
- {lv:"45-50",z:"Tanaris / Feralas ou Gorge des Vents brûlants",d:"Donjons possibles : Uldaman (41+), Zul'Farrak (44+), Maraudon (46+). Alcaz Prison (48-53) sur l'île d'Alcaz, au Marécage d'Âprefange.",t:[["dj","Donjons"]]},
- {lv:"50-55",z:"Un'Goro, Gangrebois ou Maleterres de l'Ouest",d:"Refuge des Marshal, Gangrebois ou Camp du Noroît. Garde tes cristaux de puissance d'Un'Goro pour Shaper's Terrace.",t:[]},
- {lv:"55-60",z:"Maleterres de l'Est ou Berceau-de-l'Hiver",d:"Chapelle de l'Espoir de Lumière ou Long-guet, plus les fins de chaînes des Steppes ardentes et de Gangrebois. Donjons Blackmaw Hold (55-60, Azshara) et Shaper's Terrace (58-60, Un'Goro).",t:[["new","Nouveaux donjons"]]},
- {lv:"60",z:"Mont Hyjal",d:"Zone de fin de jeu, par la gorge de Sombrevent au sud du Berceau-de-l'Hiver. Félicitations !",t:[["new","Fin de jeu"],["mile","60"]]}
-];
-var done=load('gm_route',{});
+/* ---------- Route (niveau par niveau + étapes) ---------- */
+var STEPS=window.STEPS||[], LEVELS=window.LEVELS||[], SMAP={};
+STEPS.forEach(function(st){SMAP[st.id]=st;});
+var qdone=load('gm_quests',{});
+function stepCount(st){var n=0;(st.quetes||[]).forEach(function(q,i){if(qdone[st.id+':'+i])n++;});return [n,(st.quetes||[]).length];}
+function tagsHTML(t){return (t||[]).map(function(x){return '<span class="tag '+x[0]+'">'+x[1]+'</span>';}).join('');}
+function lvTxt(st){return st.lv[0]===st.lv[1]?String(st.lv[0]):st.lv[0]+'-'+st.lv[1];}
 function renderRoute(){
-  var h='',n=0;
-  ROUTE.forEach(function(s,i){var ok=!!done[i]; if(ok)n++;
-    h+='<div class="step"><label class="dot'+(ok?' ok':'')+'" title="Marquer comme fait"><input type="checkbox" data-i="'+i+'"'+(ok?' checked':'')+'></label>'+
-       '<div class="card'+(ok?' done':'')+'"><div class="top"><span class="lvtag">'+s.lv+'</span><b class="z">'+s.z+'</b>'+s.t.map(function(t){return '<span class="tag '+t[0]+'">'+t[1]+'</span>';}).join('')+'</div><div class="muted" style="margin-top:4px">'+s.d+'</div></div></div>';
-  });
-  document.getElementById('route').innerHTML=h;
-  document.getElementById('progbar').style.width=(n/ROUTE.length*100)+'%';
+  var g='';
+  LEVELS.forEach(function(L){var st=SMAP[L[1]]; if(!st)return; var alt=L[3]&&SMAP[L[3]];
+    g+='<button class="lvrow'+(L[0]===level?' cur':'')+(L[0]<level?' past':'')+'" data-go="'+L[1]+'"><span class="n">'+L[0]+'</span><span><span class="z">'+st.zone+'</span>'+L[2]+(alt?'<br><span class="alt">ou : '+alt.title+'</span>':'')+'</span></button>';});
+  document.getElementById('lvgrid').innerHTML=g;
+  var h='',tot=0,dn=0;
+  STEPS.forEach(function(st){var c=stepCount(st); tot+=c[1]; dn+=c[0]; var full=c[1]&&c[0]===c[1];
+    h+='<div class="step"><span class="dot'+(full?' ok':'')+'"></span><div class="card click'+(full?' done':'')+'" data-go="'+st.id+'"><div class="top"><span class="lvtag">'+lvTxt(st)+'</span><b class="z">'+st.title+'</b>'+tagsHTML(st.tags)+'<span class="cnt">'+(c[1]?c[0]+'/'+c[1]+' quêtes':'')+'</span></div><div class="muted" style="margin-top:4px">'+st.intro+'</div></div></div>';});
+  document.getElementById("routelist").innerHTML=h;
+  document.getElementById('progbar').style.width=(tot?dn/tot*100:0)+'%';
 }
-document.getElementById('route').addEventListener('change',function(e){var i=e.target.dataset.i;if(i==null)return;done[i]=e.target.checked;save('gm_route',done);renderRoute();});
+function ul(arr){return '<ul class="plain">'+arr.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';}
+function renderEtape(id){
+  var st=SMAP[id]; if(!st){go('route');return;}
+  var i=STEPS.indexOf(st), prev=STEPS[i-1], next=STEPS[i+1];
+  var srcLbl={zone:'Ordre de quêtes tiré d\'un guide de zone WoW Forever.',classic:'Pas de guide de zone Forever publié : quêtes du jeu Classic, à vérifier dans ton journal.',hubs:'Zone nouvelle : les noms des quêtes ne sont pas encore publiés, seulement les hubs et l\'accès.'}[st.src.kind];
+  var h='<div class="panel"><div class="ehead"><span class="lvtag">Niv. '+lvTxt(st)+'</span><h2>'+st.title+'</h2>'+tagsHTML(st.tags)+'</div>'+
+    '<div class="muted" style="margin-top:2px">'+st.zone+'</div><p>'+st.intro+'</p>'+
+    (st.src.kind!=='zone'?'<div class="warn">'+srcLbl+'</div>':'')+
+    '<div class="src">Source : <a href="'+st.src.url+'" target="_blank" rel="noopener">'+st.src.name+'</a></div></div>';
+  h+='<div class="panel"><h2>Y aller</h2>'+ul(st.acces||[])+(st.avant&&st.avant.length?'<h3>À prendre avant d\'y aller</h3>'+ul(st.avant):'')+'</div>';
+  if(st.quetes&&st.quetes.length){
+    h+='<div class="panel"><h2>'+(st.src.kind==='hubs'?'Ce que tu peux faire':'Quêtes, dans l\'ordre')+'</h2><div class="muted small" style="margin-bottom:8px">Coche au fur et à mesure, c\'est gardé dans ton navigateur.</div><ol class="qlist">'+
+      st.quetes.map(function(q,k){var ok=!!qdone[st.id+':'+k];return '<li class="'+(ok?'ok':'')+'" data-q="'+st.id+':'+k+'"><input type="checkbox"'+(ok?' checked':'')+' aria-label="Fait"><span>'+q+'</span></li>';}).join('')+'</ol></div>';
+  }
+  if(st.danger&&st.danger.length)h+='<div class="panel"><h2>Zones dangereuses</h2>'+ul(st.danger)+'</div>';
+  if(st.elites&&st.elites.length)h+='<div class="panel"><h2>Élites et quêtes de groupe</h2><table><tr><th>Quête</th><th>Verdict</th></tr>'+st.elites.map(function(e){return '<tr><td><b>'+e[0]+'</b></td><td>'+e[1]+'</td></tr>';}).join('')+'</table></div>';
+  if(st.skip&&st.skip.length)h+='<div class="panel"><h2>À zapper</h2>'+ul(st.skip)+'</div>';
+  h+='<div class="panel"><h2>Ensuite</h2><p style="margin:0 0 10px">'+st.ensuite+'</p><div class="enav">'+(prev?'<button class="back" data-go="'+prev.id+'">← '+prev.title+'</button>':'<span></span>')+(next?'<button class="back" data-go="'+next.id+'">'+next.title+' →</button>':'')+'</div></div>';
+  document.getElementById('etape').innerHTML=h;
+  window.scrollTo(0,0);
+}
+document.getElementById('etape').addEventListener('click',function(e){
+  var li=e.target.closest('li[data-q]'); if(li){var k=li.dataset.q; qdone[k]=!qdone[k]; save('gm_quests',qdone); li.classList.toggle('ok',qdone[k]); li.querySelector('input').checked=qdone[k]; return;}
+  var b=e.target.closest('[data-go]'); if(b)go('etape-'+b.dataset.go);
+});
+document.getElementById('lvgrid').addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(b)go('etape-'+b.dataset.go);});
+document.getElementById("routelist").addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(b)go('etape-'+b.dataset.go);});
+document.getElementById('back').addEventListener('click',function(){go('route');});
 
-/* ---------- Onglets ---------- */
-var tabs=document.getElementById('tabs');
-function show(v){[].forEach.call(tabs.children,function(b){b.classList.toggle('on',b.dataset.v===v);});
-  [].forEach.call(document.querySelectorAll('section.view'),function(s){s.classList.toggle('on',s.id==='v-'+v);});
+/* ---------- Onglets et navigation ---------- */
+var tabs=document.getElementById('tabs'), VIEWS=['talents','route','rotation','donjons','survie'];
+function show(v){var tabv=v.indexOf('etape-')===0?'route':v;
+  [].forEach.call(tabs.children,function(b){b.classList.toggle('on',b.dataset.v===tabv);});
+  var sec=v.indexOf('etape-')===0?'etape':v;
+  [].forEach.call(document.querySelectorAll('section.view'),function(s){s.classList.toggle('on',s.id==='v-'+sec);});
+  if(sec==='etape')renderEtape(v.slice(6)); else if(v==='route')renderRoute();
   tip.classList.remove('on');}
-tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;show(b.dataset.v);try{history.replaceState(null,'','#'+b.dataset.v);}catch(err){location.hash=b.dataset.v;}});
-var h0=(location.hash||'').slice(1); if(['talents','route','rotation','donjons','survie'].indexOf(h0)>=0)show(h0);
-
-setLevel(level); renderRoute();
+function go(v){if(location.hash==='#'+v)show(v); else location.hash=v;}
+tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(b.dataset.v);});
+window.addEventListener('hashchange',function(){route();});
+function route(){var h=(location.hash||'').slice(1); if(VIEWS.indexOf(h)>=0||h.indexOf('etape-')===0)show(h); else show('talents');}
+setLevel(level); renderRoute(); route();
 })();
 </script>
 </body>
