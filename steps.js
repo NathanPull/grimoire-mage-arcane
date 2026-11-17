@@ -338,3 +338,28 @@ window.LEVELS = [
  [59,"berceau","Berceau-de-l'Hiver, donjons de fin"],
  [60,"hyjal","Mont Hyjal"]
 ];
+
+/* Cartes : id de zone Wowhead (cartes Classic en français), points fixes [x, y, libellé, type].
+ * type "hub" = point de vol / base, "danger" = à éviter, sinon point d'intérêt.
+ * Les coordonnées écrites « (x, y) » dans les quêtes sont ajoutées automatiquement, numérotées comme la quête. */
+window.MAPS = {
+  austrivage:{id:267,pins:[[49.3,52.3,"Austrivage, point de vol (Darla Harris)","hub"],[43,68,"Côte ouest : murlocs (Down the Coast, Farren's Proof)"],[57,71,"Côte est : nagas Daggerspine (Stormwind Ho!)"],[44,29,"Darrow Hill : yétis (fourrures de Bartolo)"],[62,20,"Moulin-de-Tarren (Horde)","danger"],[71,79,"Dun Garok : élites (Battle of Hillsbrad)","danger"]]},
+  dalaran:{id:36,pins:[[20.5,70,"Dalaran : entrée du donjon par les égouts","hub"],[58.3,67.9,"Sofera's Naze"]]},
+  arathi1:{id:45,pins:[[46,47,"Refuge de l'Ornière, point de vol","hub"],[74,33,"Trépas-d'Orgrim (Horde)","danger"],[30,60,"Stromgarde : élites, en groupe seulement","danger"]]},
+  alterac:{id:36,pins:[[60,43.7,"Strahnbrad : Syndicat, Alterac Signet Ring"],[39.5,47,"Ruines d'Alterac : ogres Crushridge élites","danger"],[20.5,70,"Dalaran"]]},
+  arathi2:{id:45,pins:[[46,47,"Refuge de l'Ornière, point de vol","hub"],[21,75,"Grotte vers la crique de Faldir"],[30,60,"Stromgarde : élites","danger"]]},
+  citesubmergee:{id:33,pins:[[32.5,29.2,"Grom'gol (Horde) : l'entrée sous l'eau est à l'ouest","danger"]]},
+  rives1:{schema:"rives",pins:[[60.6,81.6,"Fort-Lointain, point de vol (Gretchen Mayberry)","hub"],[59.4,45,"Rog'mar (Horde)","danger"],[12,12,"Entrée depuis les Carmines (Bristle Hills)"]]},
+  rives2:{schema:"rives",pins:[[60.6,81.6,"Fort-Lointain, point de vol","hub"],[59.4,45,"Rog'mar (Horde)","danger"]]},
+  hinterlands:{id:47,pins:[[11.1,46.2,"Nid-de-l'Aigle, point de vol","hub"],[81.7,81.8,"Village de Revantusk (Horde)","danger"]]},
+  feralas:{id:357,pins:[[30.2,43.2,"Bastion de Plumelune, point de vol","hub"],[75.5,44.3,"Mojache (Horde)","danger"]]},
+  tanaris:{id:440,pins:[[51,29,"Gadgetzan, point de vol","hub"],[38.7,20,"Zul'Farrak (donjon)"]]},
+  gorge:{id:51,pins:[[37.9,30.8,"Thorium Point, point de vol","hub"]]},
+  ungoro:{id:490,pins:[[43.5,8.5,"Refuge des Marshal, point de vol","hub"]]},
+  wpl1:{id:28,pins:[[42.9,85.1,"Camp du Noroît, point de vol","hub"]]},
+  steppes:{id:46,pins:[[84.3,68.3,"Morgan's Vigil, point de vol","hub"],[65.6,24.2,"Flame Crest"],[80,40,"Dreadmaul Rock : ogres"]]},
+  gangrebois:{id:361,pins:[[62.5,24.2,"Talonbranch Glade, point de vol","hub"]]},
+  epl:{id:139,pins:[[81.6,59.3,"Chapelle de l'Espoir de Lumière, point de vol","hub"]]},
+  wpl2:{id:28,pins:[[42.9,85.1,"Camp du Noroît, point de vol","hub"]]},
+  berceau:{id:618,pins:[[61.3,38.9,"Long-guet, point de vol","hub"]]}
+};
