@@ -139,7 +139,7 @@ img.official.broken{opacity:0}
 .rot li:before{content:counter(r);position:absolute;left:10px;top:7px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-weight:700;color:#1a1206;background:linear-gradient(180deg,#d7b8ff,var(--arc))}
 .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
 .k{padding:10px 12px;border-radius:10px;background:#120f16;border:1px solid var(--edge)}
-.k b{font-family:Cinzel,serif;color:var(--gold2);display:block;margin-bottom:2px}
+.k>b:first-child{font-family:Cinzel,serif;color:var(--gold2);display:block;margin-bottom:2px}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--edge);vertical-align:top}
 th{font-family:Cinzel,serif;color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.05em}
@@ -164,7 +164,7 @@ footer a{color:var(--gold)}
     </svg>
     <h1>Grimoire du Mage Arcane</h1>
     <div class="sub">Guide de leveling 30 → 60 · WoW Forever</div>
-    <div class="chips"><span class="chip">Alliance</span><span class="chip">Royaume JcJ</span><span class="chip">Solo</span><span class="chip">Build 31 / 0 / 20</span></div>
+    <div class="chips"><span class="chip">Alliance</span><span class="chip">Royaume JcJ</span><span class="chip">Solo</span><span class="chip">Build 32 / 0 / 19</span></div>
   </header>
 
   <nav class="tabs" id="tabs">
@@ -213,36 +213,52 @@ footer a{color:var(--gold)}
       <h2>Rotation en solo</h2>
       <ol class="rot">
         <li>Garde <b>Intelligence des arcanes</b> et <b>Armure de givre</b> en permanence.</li>
-        <li>Ouvre avec un <b>Éclair de givre de rang 1</b>. Il ralentit le monstre et a 20 % de chances de déclencher Barrage de projectiles.</li>
-        <li>Enchaîne les <b>Déflagrations des arcanes</b>, jamais plus de 4 d'affilée : chaque cast double le coût du suivant.</li>
-        <li>Dès que <b>Barrage de projectiles</b> s'allume, lance <b>Projectiles des arcanes</b>, gratuits et deux fois plus rapides.</li>
-        <li>Sur un proc <b>Idées claires</b> (Concentration des arcanes), lance une Déflagration gratuite.</li>
-        <li>Lance <b>Colère des arcanes</b> à 3 ou 4 charges.</li>
-        <li>Colère en recharge et 4 charges ? Finis avec <b>Trait de feu</b>, <b>Éclair de givre</b> ou <b>Explosion des arcanes</b>.</li>
-        <li>Ça tourne mal : <b>Nova de givre</b> puis <b>Transfert</b>, et <b>Métamorphose</b> sur le monstre dangereux.</li>
+        <li>Ouvre avec <b>Colère des arcanes</b> (dès le 27). Le premier sort se lance sans pression, c'est le moment d'utiliser ton plus long cast.</li>
+        <li>Sur un monstre de mêlée, un <b>Éclair de givre de rang 1</b> pour le ralentir.</li>
+        <li>Monte <b>2 charges</b> de <b>Déflagration des arcanes</b>, pas plus en leveling : au-delà, le coût en mana explose. Pousse à 3 ou 4 seulement si ta barre est pleine ou sur un proc d'Idées claires.</li>
+        <li>Dès que <b>Barrage de projectiles</b> ou <b>Idées claires</b> s'allume, lance <b>Projectiles des arcanes</b>, même avant d'avoir tes 2 charges.</li>
+        <li>Pas de proc ? Spamme l'<b>Éclair de givre de rang 1</b> (cast court, 20 % de chances de Barrage) jusqu'à en avoir un ou jusqu'à la fin des charges.</li>
+        <li><b>Présence spirituelle</b> + <b>Colère des arcanes</b> pour un gros coup instantané en plein combat.</li>
+        <li>Achève à la <b>baguette</b> ou au <b>Trait de feu</b>. En cas de souci, <b>Nova de givre</b> puis <b>Transfert</b>, et <b>Métamorphose</b> sur le monstre dangereux.</li>
       </ol>
     </div>
     <div class="panel">
       <h2>Mana et statistiques</h2>
       <div class="kv">
-        <div class="k"><b>Ne vide pas ta barre</b>Trois Déflagrations d'affilée peuvent te mettre à sec. Consomme toujours les charges que tu as montées.</div>
+        <div class="k"><b>Ne vide pas ta barre</b>Chaque Déflagration double le coût de la suivante. Reste à 2 charges en leveling et consomme toujours celles que tu as montées.</div>
         <div class="k"><b>L'Esprit compte</b>Avec Méditation des arcanes, tu gardes 50 % de ta régénération en incantant. C'est ce qui te fait tenir les longs combats.</div>
         <div class="k"><b>Garde une réserve</b>Toujours assez de mana pour Nova + Transfert, surtout sur un royaume JcJ.</div>
-        <div class="k"><b>Le hasard des procs</b>Sans Barrage ni Idées claires, tu manques de mana plus vite qu'un Givre. Bois entre chaque pull si besoin, c'est gratuit.</div>
+        <div class="k"><b>Le hasard des procs</b>Sans Barrage ni Idées claires, tu manques de mana plus vite qu'un Givre. Bois entre les pulls et utilise <b>Évocation</b> entre deux combats.</div>
+        <div class="k"><b>Précision dès le 23</b>Les deux guides détaillés que j'ai comparés prennent la Précision tôt : en leveling, tu rates sinon trop de sorts sur les monstres de ton niveau.</div>
+        <div class="k"><b>Nourriture</b>Le buff Bien nourri donne 5 % d'XP en plus sur les monstres tués. Un seul buff de nourriture à la fois.</div>
       </div>
       <h3>Priorité des statistiques</h3>
-      <div class="stat"><span>Intelligence</span><span>Puissance des sorts</span><span>Esprit</span><span>Mp5</span><span>Endurance</span><span>Armure</span></div>
+      <div class="stat"><span>Intelligence</span><span>Endurance</span><span>Puissance des sorts</span><span>Esprit</span><span>Mp5</span></div>
+      <div class="muted small" style="margin-top:6px">En leveling, l'Intelligence prime : elle gonfle ta mana et donc les dégâts de Colère des arcanes. Cherche les pièces « de l'aigle » (Intelligence + Endurance). La puissance des sorts passe devant à partir du 60.</div>
     </div>
     <div class="panel">
       <h2>Repères à ne pas rater</h2>
       <table>
         <tr><th>Niveau</th><th>Quoi</th></tr>
-        <tr><td>30</td><td>Armure de glace, nouvelle téléportation, Présence spirituelle (talent)</td></tr>
-        <tr><td>40</td><td>Monture, double spécialisation, portails, Pouvoir des arcanes (talent)</td></tr>
+        <tr><td>23-24</td><td>Précision (2 points), pour arrêter de rater tes sorts</td></tr>
+        <tr><td>27</td><td>Colère des arcanes (talent), ton nouveau sort d'ouverture</td></tr>
+        <tr><td>30</td><td>Armure de glace, nouvelle téléportation</td></tr>
+        <tr><td>32</td><td>Présence spirituelle (talent)</td></tr>
+        <tr><td>40</td><td>Monture, double spécialisation, portails</td></tr>
+        <tr><td>43</td><td>Pouvoir des arcanes (talent)</td></tr>
         <tr><td>45</td><td>Palier d'Héritage (points communs au compte)</td></tr>
         <tr><td>50</td><td>Nouveau portail</td></tr>
         <tr><td>Tous les 2 niveaux</td><td>Passe chez ton maître pour racheter les rangs de tes sorts</td></tr>
       </table>
+    </div>
+    <div class="panel">
+      <h2>Astuces</h2>
+      <div class="kv">
+        <div class="k"><b>Macro Projectiles</b><span class="small">Interrompt ton cast pour lancer les Projectiles quand Barrage s'allume (appuie deux fois) :<br><code>#showtooltip Projectiles des arcanes<br>/stopcasting [nochanneling:Projectiles des arcanes]<br>/cast [nochanneling:Projectiles des arcanes] Projectiles des arcanes</code></span></div>
+        <div class="k"><b>Voir tes procs</b>L'addon SpellActivation Overlay (CurseForge) affiche Barrage de projectiles et Idées claires à l'écran.</div>
+        <div class="k"><b>Enchantement d'arme</b>Le guide de MrRonit conseille « Enchant Weapon - Revelation » sur une arme que tu garderas 10 à 20 niveaux : ses procs font critiquer tous tes Projectiles.</div>
+        <div class="k"><b>Métiers</b>Couture + Enchantement pour t'équiper, ou Herboristerie + Alchimie (ou Herboristerie + Dépeçage) pour l'or.</div>
+      </div>
     </div>
   </section>
 
@@ -253,10 +269,15 @@ footer a{color:var(--gold)}
       <table>
         <tr><th>Niveaux</th><th>Donjon</th><th>Où</th><th></th></tr>
         <tr><td>28-33</td><td><b>Cité de Dalaran</b></td><td>Montagnes d'Alterac. Quête Alliance auprès de l'émissaire Jacques à Austrivage, entrée par les égouts.</td><td><span class="tag new">Nouveau</span></td></tr>
+        <tr><td>30-40+</td><td>Monastère écarlate (4 ailes)</td><td>Clairières de Tirisfal, en plein territoire Horde : risqué en JcJ solo, mieux en groupe.</td><td><span class="tag dj">Classique</span></td></tr>
         <tr><td>35-40</td><td><b>La cité Submergée</b></td><td>Au large de Strangleronce, à l'ouest de Grom'gol. Entrée sous l'eau.</td><td><span class="tag new">Nouveau</span></td></tr>
         <tr><td>40-45</td><td><b>Bastion Krol'dok</b></td><td>Rives Claires. Fais les chaînes de la zone avant.</td><td><span class="tag new">Nouveau</span></td></tr>
-        <tr><td>~44-50</td><td>Zul'Farrak, Maraudon, Uldaman</td><td>Tanaris, Désolace, Terres ingrates</td><td><span class="tag dj">Classique</span></td></tr>
+        <tr><td>41+</td><td>Uldaman</td><td>Terres ingrates</td><td><span class="tag dj">Classique</span></td></tr>
+        <tr><td>44+</td><td>Zul'Farrak</td><td>Tanaris</td><td><span class="tag dj">Classique</span></td></tr>
+        <tr><td>46+</td><td>Maraudon</td><td>Désolace (des quêtes y mènent depuis Shen'dralas)</td><td><span class="tag dj">Classique</span></td></tr>
         <tr><td>48-53</td><td><b>Alcaz Prison</b></td><td>Île d'Alcaz, Marécage d'Âprefange</td><td><span class="tag new">Nouveau</span></td></tr>
+        <tr><td>50+</td><td>Temple englouti</td><td>Marais des Chagrins</td><td><span class="tag dj">Classique</span></td></tr>
+        <tr><td>52+</td><td>Profondeurs de Rochenoire</td><td>Mont Rochenoire</td><td><span class="tag dj">Classique</span></td></tr>
         <tr><td>55-60</td><td><b>Blackmaw Hold</b></td><td>Azshara</td><td><span class="tag new">Nouveau</span></td></tr>
         <tr><td>58-60</td><td><b>Shaper's Terrace</b></td><td>Nord d'Un'Goro. Apporte tes cristaux de puissance.</td><td><span class="tag new">Nouveau</span></td></tr>
       </table>
@@ -270,19 +291,19 @@ footer a{color:var(--gold)}
       <h2>Survivre en solo sur un royaume JcJ</h2>
       <div class="kv">
         <div class="k"><b>Évite Strangleronce</b>C'est la zone de gank par excellence. Les Rives Claires couvrent la même tranche et sont plus intéressantes, même si elles restent contestées.</div>
-        <div class="k"><b>Un cooldown en réserve</b>Nova de givre, Transfert et, dès le 56, Bloc de glace. Ne grille pas tout sur un monstre si un ennemi rôde.</div>
+        <div class="k"><b>Un cooldown en réserve</b>Nova de givre et Transfert, puis Bloc de glace au 60 (ajouté par rapport aux builds en ligne, pour le JcJ). Ne grille pas tout sur un monstre si un ennemi rôde.</div>
         <div class="k"><b>Burst d'Arcane</b>Présence spirituelle + Colère des arcanes à 4 charges fait très mal d'un coup. Garde-le pour un joueur qui t'attaque.</div>
         <div class="k"><b>Voleurs et druides</b>Métamorphose dès qu'ils sortent du camouflage, puis prends de la distance.</div>
         <div class="k"><b>Jamais en sous-vie</b>Mange et bois après chaque combat, ta nourriture et ton eau sont gratuites.</div>
         <div class="k"><b>Si on te camp</b>Change de zone ou téléporte-toi au lieu de revenir mourir. Lie ta pierre de foyer à un hub que tu vas réutiliser.</div>
         <div class="k"><b>Mille Pointes</b>Possible vers 30-33 pour les quêtes neutres des Salines, mais la zone grouille de Horde et n'a pas de village Alliance proche.</div>
-        <div class="k"><b>Repos</b>Déconnecte-toi toujours en auberge ou en capitale. La tente de camp remplit ton repos jusqu'à 5 % d'un niveau.</div>
+        <div class="k"><b>Repos</b>Déconnecte-toi toujours en auberge ou en capitale. La tente de camp (Travail du cuir 20, à poser près d'un feu de camp) remplit ton repos jusqu'à 5 % d'un niveau.</div>
       </div>
     </div>
   </section>
 
   <footer>
-    Données de talents : calculateur Kami Labs, d'après les notes de lancement du 2 novembre 2026. L'ordre des points est une proposition de leveling solo, pas un build officiel.<br>
+    Données de talents : calculateur Kami Labs, d'après les notes de lancement du 2 novembre 2026. L'ordre des points suit le guide de leveling Arcane de MrRonit (Mobalytics, mis à jour le 16 novembre), avec Bloc de glace à la place du dernier point de Fracasser pour le JcJ.<br>
     Icônes chargées depuis le CDN de Wowhead. World of Warcraft et ses icônes appartiennent à Blizzard Entertainment. Site de fan, sans lien avec Blizzard.
   </footer>
 </div>
@@ -297,10 +318,10 @@ var TREES=[{"s":"arcane","n":"Arcanes","t":[["1.1",1,1,2,"Spécialisation Baguet
 /* ---------- Ordre de leveling (proposition) : [arbre, id, nombre de points] ---------- */
 var PLAN=[
  ["arcane","1.3",5],["arcane","4.4",2],["arcane","2.3",3],["arcane","3.4",1],["arcane","2.3",2],
- ["arcane","3.2",2],["arcane","4.4-2",1],["arcane","3.2",1],["arcane","4.3",3],["arcane","5.2",1],
- ["arcane","5.3",5],["arcane","6.3",3],["arcane","3.1",1],["arcane","7.2",1],
- ["frost","1.3",3],["frost","1.1",2],["frost","2.4",3],["frost","2.3",2],["frost","2.2",3],
- ["frost","3.3",1],["frost","3.4",1],["frost","4.2",1],["frost","4.1",2],["frost","4.4",2]
+ ["frost","1.3",2],["arcane","3.2",2],["arcane","4.4-2",1],["arcane","4.3",3],["arcane","3.2",1],
+ ["arcane","5.2",1],["arcane","5.3",5],["arcane","2.1",2],["arcane","6.3",3],["arcane","7.2",1],
+ ["frost","1.3",1],["frost","1.2",5],["frost","2.4",3],["frost","2.3",2],["frost","2.2",3],
+ ["frost","4.4",2],["frost","4.2",1]
 ];
 var ORDER=[]; PLAN.forEach(function(p){for(var i=0;i<p[2];i++)ORDER.push({tree:p[0],id:p[1]});});
 ORDER.forEach(function(o,i){o.level=10+i;});
@@ -481,12 +502,14 @@ var ROUTE=[
  {lv:"30-33",z:"Cité de Dalaran",d:"Donjon dans les montagnes d'Alterac, entrée par les égouts. À faire tant que tu es dans la tranche.",t:[["new","Nouveau donjon"],["dj","Groupe"]]},
  {lv:"30-35",z:"Hautes-terres d'Arathi",d:"Base au Refuge de l'Ornière, pas de quête préliminaire. Prends le point de vol et toutes les quêtes du refuge. Garde les finales de groupe pour la fin.",t:[]},
  {lv:"32-34",z:"Salines de Mille Pointes",d:"Option : les quêtes neutres de la course de Mirage. Beaucoup de Horde dans la zone, pas de village Alliance proche.",t:[["opt","Optionnel"],["pvp","Risqué"]]},
- {lv:"35-40",z:"Rives Claires",d:"Nouvelle zone, plus de 150 quêtes entre 35 et 45. Le port de Powderfuse la relie à Tanaris par bateau.",t:[["new","Nouvelle zone"],["pvp","Contestée"]]},
+ {lv:"30-40",z:"Monastère écarlate",d:"Option donjon : 4 ailes de 30 à 40+. L'entrée est dans les Clairières de Tirisfal, en territoire Horde, donc à faire en groupe.",t:[["dj","Groupe"],["pvp","Risqué"]]},
+ {lv:"35-40",z:"Rives Claires",d:"Nouvelle zone, près de 200 quêtes entre 35 et 45. Pour l'Alliance, on y entre à pied : route nord du Comté-du-Lac (Carmines), puis à droite à la fourche avant les Steppes ardentes. Prends le point de vol à Fort-Lointain (Farholde Keep), au sud-est.",t:[["new","Nouvelle zone"],["pvp","Contestée"]]},
  {lv:"35-40",z:"La cité Submergée",d:"Donjon au large de Strangleronce, à l'ouest de Grom'gol. L'entrée est sous l'eau.",t:[["new","Nouveau donjon"],["dj","Groupe"]]},
- {lv:"40",z:"Retour en capitale",d:"Monture, double spécialisation, portails, Pouvoir des arcanes. Passe tous tes rangs de sorts.",t:[["mile","Palier clé"]]},
+ {lv:"40",z:"Retour en capitale",d:"Monture, double spécialisation, portails. Passe tous tes rangs de sorts. Pouvoir des arcanes arrive au 43.",t:[["mile","Palier clé"]]},
  {lv:"40-45",z:"Fin des Rives Claires + Bastion Krol'dok",d:"Termine les chaînes de la zone, puis le donjon Bastion Krol'dok (40-45).",t:[["new","Nouveau donjon"]]},
+ {lv:"~43-50",z:"Shen'dralas",d:"Nouvelle zone entre Mulgore et Désolace (Shen'dralar, centaures). Blizzard n'a pas donné son niveau : les guides la placent entre 40 et 55. Ses quêtes mènent à Maraudon et aux Souilles de Tranchebauge.",t:[["new","Nouvelle zone"],["opt","Niveau non officiel"]]},
  {lv:"43-47",z:"Tanaris, Feralas ou Hinterlands",d:"Bases à Gadgetzan, au Bastion de Plumelune ou au Nid-de-l'Aigle. Palier d'Héritage au niveau 45.",t:[["mile","Héritage 45"]]},
- {lv:"45-50",z:"Tanaris / Feralas ou Gorge des Vents brûlants",d:"Donjons possibles : Zul'Farrak, Maraudon, Uldaman. Alcaz Prison (48-53) sur l'île d'Alcaz, au Marécage d'Âprefange.",t:[["dj","Donjons"]]},
+ {lv:"45-50",z:"Tanaris / Feralas ou Gorge des Vents brûlants",d:"Donjons possibles : Uldaman (41+), Zul'Farrak (44+), Maraudon (46+). Alcaz Prison (48-53) sur l'île d'Alcaz, au Marécage d'Âprefange.",t:[["dj","Donjons"]]},
  {lv:"50-55",z:"Un'Goro, Gangrebois ou Maleterres de l'Ouest",d:"Refuge des Marshal, Gangrebois ou Camp du Noroît. Garde tes cristaux de puissance d'Un'Goro pour Shaper's Terrace.",t:[]},
  {lv:"55-60",z:"Maleterres de l'Est ou Berceau-de-l'Hiver",d:"Chapelle de l'Espoir de Lumière ou Long-guet, plus les fins de chaînes des Steppes ardentes et de Gangrebois. Donjons Blackmaw Hold (55-60, Azshara) et Shaper's Terrace (58-60, Un'Goro).",t:[["new","Nouveaux donjons"]]},
  {lv:"60",z:"Mont Hyjal",d:"Zone de fin de jeu, par la gorge de Sombrevent au sud du Berceau-de-l'Hiver. Félicitations !",t:[["new","Fin de jeu"],["mile","60"]]}
