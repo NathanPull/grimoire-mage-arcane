@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grimoire du Mage Arcane — WoW Forever 30-60</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0b10; --stone:#1b1720; --stone2:#241e2b; --edge:#3a3142;
+  --gold:#d9b25f; --gold2:#f3d58c; --goldDim:#8a6d33;
+  --ink:#e9e1cf; --muted:#a59a86; --arc:#b07cff; --arc2:#6c3fd1;
+  --fire:#ff8a3d; --frost:#6cc8ff; --ok:#7fd36b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Spectral,Georgia,serif;font-size:16px;line-height:1.5}
+body{background:
+  radial-gradient(1200px 600px at 50% -200px, rgba(140,90,255,.18), transparent 70%),
+  radial-gradient(800px 400px at 100% 100%, rgba(108,200,255,.06), transparent 70%),
+  repeating-linear-gradient(45deg, rgba(255,255,255,.012) 0 2px, transparent 2px 6px),
+  var(--bg);min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
+header.hero{position:relative;text-align:center;padding:28px 16px 18px;border:1px solid var(--edge);border-radius:14px;
+  background:linear-gradient(180deg,rgba(60,40,90,.55),rgba(20,16,26,.9));box-shadow:inset 0 0 0 1px rgba(217,178,95,.25),0 20px 50px rgba(0,0,0,.5)}
+header.hero:before,header.hero:after{content:"";position:absolute;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--goldDim),transparent,var(--goldDim))}
+header.hero:before{left:10px}header.hero:after{right:10px}
+.crest{width:64px;height:64px;margin:0 auto 6px;display:block;filter:drop-shadow(0 0 14px rgba(176,124,255,.7))}
+h1{font-family:Cinzel,serif;font-weight:900;letter-spacing:.06em;margin:0;font-size:clamp(22px,4vw,38px);
+  background:linear-gradient(180deg,var(--gold2),var(--gold) 55%,var(--goldDim));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin-top:4px;font-style:italic}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.chip{font-family:Cinzel,serif;font-size:12px;letter-spacing:.08em;padding:4px 10px;border:1px solid var(--goldDim);border-radius:999px;color:var(--gold2);background:rgba(0,0,0,.35)}
+
+nav.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:18px 0 14px}
+nav.tabs button{font-family:Cinzel,serif;font-weight:700;letter-spacing:.06em;font-size:13px;color:var(--muted);
+  background:linear-gradient(180deg,#2a2331,#17131c);border:1px solid var(--edge);border-radius:8px;padding:9px 14px;cursor:pointer;transition:.15s}
+nav.tabs button:hover{color:var(--ink);border-color:var(--goldDim)}
+nav.tabs button.on{color:#1a1206;background:linear-gradient(180deg,var(--gold2),var(--gold));border-color:var(--gold2);box-shadow:0 0 18px rgba(217,178,95,.35)}
+section.view{display:none}section.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.panel{border:1px solid var(--edge);border-radius:12px;background:linear-gradient(180deg,rgba(36,30,43,.92),rgba(20,16,25,.95));
+  box-shadow:inset 0 0 0 1px rgba(217,178,95,.12);padding:16px;margin-bottom:14px}
+.panel h2{font-family:Cinzel,serif;color:var(--gold2);font-size:18px;letter-spacing:.05em;margin:0 0 10px}
+.panel h3{font-family:Cinzel,serif;color:var(--gold);font-size:15px;margin:14px 0 6px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* Level control */
+.lvlbar{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.lvlnum{font-family:Cinzel,serif;font-weight:900;font-size:40px;line-height:1;color:var(--gold2);text-shadow:0 0 18px rgba(217,178,95,.4);min-width:70px;text-align:center}
+.lvlnum small{display:block;font-size:11px;letter-spacing:.15em;color:var(--muted);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--arc)}
+.stepbtn{font-family:Cinzel,serif;border:1px solid var(--goldDim);background:#1a1520;color:var(--gold2);border-radius:8px;width:38px;height:38px;font-size:18px;cursor:pointer}
+.stepbtn:hover{background:#2a2132}
+.nextbox{margin-top:12px;display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;border:1px dashed var(--goldDim);background:rgba(176,124,255,.06)}
+.nextbox .ic{flex:0 0 auto}
+.counts{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.count{font-family:Cinzel,serif;font-size:13px;padding:4px 10px;border-radius:6px;background:#120f16;border:1px solid var(--edge)}
+
+/* Trees */
+.trees{display:grid;grid-template-columns:repeat(3,minmax(260px,1fr));gap:12px;overflow-x:auto;padding-bottom:6px}
+.tree{position:relative;border-radius:12px;border:2px solid #4a3b2a;overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(243,213,140,.25),0 10px 30px rgba(0,0,0,.6)}
+.tree .bg{position:absolute;inset:0;z-index:0}
+.tree.arcane .bg{background:radial-gradient(circle at 50% 30%,rgba(150,90,255,.35),transparent 60%),radial-gradient(circle at 20% 90%,rgba(80,40,160,.4),transparent 60%),linear-gradient(180deg,#1a1230,#0c0915)}
+.tree.fire .bg{background:radial-gradient(circle at 50% 30%,rgba(255,110,40,.28),transparent 60%),radial-gradient(circle at 80% 90%,rgba(160,40,10,.35),transparent 60%),linear-gradient(180deg,#25120b,#0f0806)}
+.tree.frost .bg{background:radial-gradient(circle at 50% 30%,rgba(100,190,255,.28),transparent 60%),radial-gradient(circle at 20% 90%,rgba(30,80,150,.4),transparent 60%),linear-gradient(180deg,#0c1a2a,#070c14)}
+.tree .head{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.15));border-bottom:1px solid rgba(243,213,140,.25)}
+.tree .head b{font-family:Cinzel,serif;font-size:17px;letter-spacing:.06em}
+.tree.arcane .head b{color:#d7b8ff}.tree.fire .head b{color:#ffc08f}.tree.frost .head b{color:#b8e6ff}
+.tree .head span{font-family:Cinzel,serif;color:var(--gold2);font-size:14px}
+.grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(7,64px);padding:12px 10px 14px;gap:0}
+.cell{position:relative;display:flex;align-items:center;justify-content:center}
+svg.arrows{position:absolute;inset:12px 10px 14px;width:calc(100% - 20px);height:calc(100% - 26px);z-index:0;pointer-events:none}
+.node{position:relative;z-index:2;width:46px;height:46px;border-radius:8px;cursor:pointer;border:2px solid #555;background:#111;
+  box-shadow:0 2px 6px rgba(0,0,0,.7);transition:transform .12s;outline:none}
+.node:hover,.node:focus{transform:scale(1.08)}
+.node svg{width:100%;height:100%;display:block;border-radius:6px}
+img.official{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
+.node.active-sp img.official{border-radius:50%}
+.node.locked{filter:grayscale(1) brightness(.45)}
+.node.partial{border-color:var(--ok);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 10px rgba(127,211,107,.55)}
+.node.max{border-color:var(--gold2);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 14px rgba(243,213,140,.7)}
+.node.next{animation:pulse 1.3s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(176,124,255,.9)}50%{box-shadow:0 0 0 7px rgba(176,124,255,0)}}
+.node.active-sp{border-radius:50%}
+.node.active-sp svg{border-radius:50%}
+.rank{position:absolute;right:-8px;bottom:-8px;z-index:3;font-family:Cinzel,serif;font-size:11px;font-weight:700;padding:1px 5px;border-radius:5px;background:#0b0a0d;border:1px solid #555;color:#bbb;line-height:1.3}
+.node.partial .rank{color:var(--ok);border-color:var(--ok)}
+.node.max .rank{color:var(--gold2);border-color:var(--gold2)}
+
+/* tooltip */
+#tip{position:fixed;z-index:50;max-width:300px;pointer-events:none;opacity:0;transition:opacity .1s;
+  background:linear-gradient(180deg,#14101c,#0b0910);border:1px solid #6b5a8a;border-radius:8px;padding:10px 12px;box-shadow:0 10px 30px rgba(0,0,0,.7)}
+#tip.on{opacity:1}
+#tip .t{font-family:Cinzel,serif;font-weight:700;color:#fff;font-size:15px}
+#tip .r{color:var(--muted);font-size:12px;margin:2px 0 6px}
+#tip .d{color:var(--gold2);font-size:13.5px}
+#tip .lv{margin-top:6px;font-size:12px;color:#c9b7ff}
+
+/* order list */
+.order{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px;margin-top:6px}
+.oitem{display:flex;gap:8px;align-items:center;padding:5px 8px;border-radius:8px;background:#120f16;border:1px solid var(--edge);font-size:13.5px;cursor:pointer}
+.oitem .l{font-family:Cinzel,serif;font-weight:700;color:var(--gold2);width:28px;text-align:right}
+.oitem .mini{position:relative;width:24px;height:24px;border-radius:5px;overflow:hidden;flex:0 0 auto;border:1px solid #555}
+.oitem .mini svg{width:100%;height:100%;display:block}
+.oitem.done{opacity:.55}
+.oitem.cur{border-color:var(--arc);background:rgba(176,124,255,.12)}
+
+/* route */
+.route{position:relative;margin-left:8px}
+.route:before{content:"";position:absolute;left:15px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--arc),var(--gold),var(--frost))}
+.step{position:relative;display:grid;grid-template-columns:32px 1fr;gap:12px;margin-bottom:10px}
+.dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#16121b;border:2px solid var(--goldDim);z-index:1;cursor:pointer}
+.dot input{display:none}
+.dot.ok{background:var(--gold);border-color:var(--gold2)}
+.dot.ok:after{content:"✓";color:#1a1206;font-weight:900}
+.card{border:1px solid var(--edge);border-radius:10px;padding:10px 12px;background:rgba(18,15,22,.9)}
+.card .top{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.lvtag{font-family:Cinzel,serif;font-weight:700;color:#1a1206;background:linear-gradient(180deg,var(--gold2),var(--gold));border-radius:5px;padding:1px 7px;font-size:12px}
+.card b.z{font-family:Cinzel,serif;font-size:15.5px}
+.tag{font-size:11px;font-family:Cinzel,serif;letter-spacing:.06em;padding:1px 7px;border-radius:999px;border:1px solid}
+.tag.new{color:#d7b8ff;border-color:#8b5cf6;background:rgba(139,92,246,.12)}
+.tag.dj{color:#ffd28a;border-color:#a37a2c;background:rgba(163,122,44,.12)}
+.tag.pvp{color:#ff9b9b;border-color:#a33b3b;background:rgba(163,59,59,.12)}
+.tag.opt{color:#9fd3ff;border-color:#2c6aa3;background:rgba(44,106,163,.12)}
+.tag.mile{color:#a6f19a;border-color:#3f8a33;background:rgba(63,138,51,.12)}
+.card.done{opacity:.55}
+.prog{height:8px;border-radius:99px;background:#120f16;border:1px solid var(--edge);overflow:hidden;margin:6px 0 14px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--arc),var(--gold));width:0;transition:width .3s}
+
+/* rotation */
+.rot{counter-reset:r;list-style:none;padding:0;margin:0}
+.rot li{counter-increment:r;position:relative;padding:8px 10px 8px 46px;margin-bottom:6px;border-radius:8px;background:#120f16;border:1px solid var(--edge)}
+.rot li:before{content:counter(r);position:absolute;left:10px;top:7px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-weight:700;color:#1a1206;background:linear-gradient(180deg,#d7b8ff,var(--arc))}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.k{padding:10px 12px;border-radius:10px;background:#120f16;border:1px solid var(--edge)}
+.k b{font-family:Cinzel,serif;color:var(--gold2);display:block;margin-bottom:2px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--edge);vertical-align:top}
+th{font-family:Cinzel,serif;color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.05em}
+tr:hover td{background:rgba(255,255,255,.02)}
+.stat{display:flex;gap:6px;flex-wrap:wrap}
+.stat span{font-family:Cinzel,serif;font-size:13px;padding:5px 10px;border-radius:6px;border:1px solid var(--goldDim);background:#16121b}
+.stat span:after{content:" ›";color:var(--goldDim)}
+.stat span:last-child:after{content:""}
+footer{margin-top:24px;color:var(--muted);font-size:12.5px;text-align:center}
+footer a{color:var(--gold)}
+@media (max-width:820px){.trees{grid-template-columns:repeat(3,280px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <svg class="crest" viewBox="0 0 64 64" aria-hidden="true">
+      <defs><radialGradient id="cg" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#f2e6ff"/><stop offset=".45" stop-color="#b07cff"/><stop offset="1" stop-color="#3b1f7a"/></radialGradient></defs>
+      <path d="M32 3 L58 18 L58 46 L32 61 L6 46 L6 18 Z" fill="#120d1c" stroke="#d9b25f" stroke-width="2"/>
+      <circle cx="32" cy="32" r="14" fill="url(#cg)"/>
+      <g stroke="#f3d58c" stroke-width="1.6" fill="none"><circle cx="32" cy="32" r="20" stroke-dasharray="3 4"/><path d="M32 10v8M32 46v8M10 32h8M46 32h8"/></g>
+    </svg>
+    <h1>Grimoire du Mage Arcane</h1>
+    <div class="sub">Guide de leveling 30 → 60 · WoW Forever</div>
+    <div class="chips"><span class="chip">Alliance</span><span class="chip">Royaume JcJ</span><span class="chip">Solo</span><span class="chip">Build 31 / 0 / 20</span></div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-v="talents" class="on">Talents</button>
+    <button data-v="route">Route 30-60</button>
+    <button data-v="rotation">Rotation</button>
+    <button data-v="donjons">Donjons</button>
+    <button data-v="survie">Survie JcJ</button>
+  </nav>
+
+  <!-- TALENTS -->
+  <section class="view on" id="v-talents">
+    <div class="panel">
+      <div class="lvlbar">
+        <div class="lvlnum"><small>NIVEAU</small><span id="lvl">30</span></div>
+        <div>
+          <input type="range" id="slider" min="10" max="60" value="30" aria-label="Niveau du personnage">
+          <div class="muted small" style="display:flex;justify-content:space-between"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span></div>
+        </div>
+        <div style="display:flex;gap:6px"><button class="stepbtn" id="minus" aria-label="Niveau précédent">−</button><button class="stepbtn" id="plus" aria-label="Niveau suivant">+</button></div>
+      </div>
+      <div class="counts" id="counts"></div>
+      <div class="nextbox" id="nextbox"></div>
+    </div>
+    <div class="trees" id="trees"></div>
+    <div class="panel" style="margin-top:14px">
+      <h2>Ordre des points, niveau par niveau</h2>
+      <div class="muted small">Clique sur une ligne pour placer le curseur à ce niveau. Les talents en cercle sont des sorts actifs, les carrés sont passifs.</div>
+      <div class="order" id="order"></div>
+    </div>
+  </section>
+
+  <!-- ROUTE -->
+  <section class="view" id="v-route">
+    <div class="panel">
+      <h2>Route Alliance 30 → 60</h2>
+      <div class="muted small">Coche les étapes au fur et à mesure. Les tranches de niveau sont souples : il n'y a pas de mise à l'échelle, donc vérifie toujours le niveau des quêtes avant une chaîne.</div>
+      <div class="prog"><i id="progbar"></i></div>
+      <div class="route" id="route"></div>
+    </div>
+  </section>
+
+  <!-- ROTATION -->
+  <section class="view" id="v-rotation">
+    <div class="panel">
+      <h2>Rotation en solo</h2>
+      <ol class="rot">
+        <li>Garde <b>Intelligence des arcanes</b> et <b>Armure de givre</b> en permanence.</li>
+        <li>Ouvre avec un <b>Éclair de givre de rang 1</b>. Il ralentit le monstre et a 20 % de chances de déclencher Barrage de projectiles.</li>
+        <li>Enchaîne les <b>Déflagrations des arcanes</b>, jamais plus de 4 d'affilée : chaque cast double le coût du suivant.</li>
+        <li>Dès que <b>Barrage de projectiles</b> s'allume, lance <b>Projectiles des arcanes</b>, gratuits et deux fois plus rapides.</li>
+        <li>Sur un proc <b>Idées claires</b> (Concentration des arcanes), lance une Déflagration gratuite.</li>
+        <li>Lance <b>Colère des arcanes</b> à 3 ou 4 charges.</li>
+        <li>Colère en recharge et 4 charges ? Finis avec <b>Trait de feu</b>, <b>Éclair de givre</b> ou <b>Explosion des arcanes</b>.</li>
+        <li>Ça tourne mal : <b>Nova de givre</b> puis <b>Transfert</b>, et <b>Métamorphose</b> sur le monstre dangereux.</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h2>Mana et statistiques</h2>
+      <div class="kv">
+        <div class="k"><b>Ne vide pas ta barre</b>Trois Déflagrations d'affilée peuvent te mettre à sec. Consomme toujours les charges que tu as montées.</div>
+        <div class="k"><b>L'Esprit compte</b>Avec Méditation des arcanes, tu gardes 50 % de ta régénération en incantant. C'est ce qui te fait tenir les longs combats.</div>
+        <div class="k"><b>Garde une réserve</b>Toujours assez de mana pour Nova + Transfert, surtout sur un royaume JcJ.</div>
+        <div class="k"><b>Le hasard des procs</b>Sans Barrage ni Idées claires, tu manques de mana plus vite qu'un Givre. Bois entre chaque pull si besoin, c'est gratuit.</div>
+      </div>
+      <h3>Priorité des statistiques</h3>
+      <div class="stat"><span>Intelligence</span><span>Puissance des sorts</span><span>Esprit</span><span>Mp5</span><span>Endurance</span><span>Armure</span></div>
+    </div>
+    <div class="panel">
+      <h2>Repères à ne pas rater</h2>
+      <table>
+        <tr><th>Niveau</th><th>Quoi</th></tr>
+        <tr><td>30</td><td>Armure de glace, nouvelle téléportation, Présence spirituelle (talent)</td></tr>
+        <tr><td>40</td><td>Monture, double spécialisation, portails, Pouvoir des arcanes (talent)</td></tr>
+        <tr><td>45</td><td>Palier d'Héritage (points communs au compte)</td></tr>
+        <tr><td>50</td><td>Nouveau portail</td></tr>
+        <tr><td>Tous les 2 niveaux</td><td>Passe chez ton maître pour racheter les rangs de tes sorts</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- DONJONS -->
+  <section class="view" id="v-donjons">
+    <div class="panel">
+      <h2>Donjons sur ta route</h2>
+      <table>
+        <tr><th>Niveaux</th><th>Donjon</th><th>Où</th><th></th></tr>
+        <tr><td>28-33</td><td><b>Cité de Dalaran</b></td><td>Montagnes d'Alterac. Quête Alliance auprès de l'émissaire Jacques à Austrivage, entrée par les égouts.</td><td><span class="tag new">Nouveau</span></td></tr>
+        <tr><td>35-40</td><td><b>La cité Submergée</b></td><td>Au large de Strangleronce, à l'ouest de Grom'gol. Entrée sous l'eau.</td><td><span class="tag new">Nouveau</span></td></tr>
+        <tr><td>40-45</td><td><b>Bastion Krol'dok</b></td><td>Rives Claires. Fais les chaînes de la zone avant.</td><td><span class="tag new">Nouveau</span></td></tr>
+        <tr><td>~44-50</td><td>Zul'Farrak, Maraudon, Uldaman</td><td>Tanaris, Désolace, Terres ingrates</td><td><span class="tag dj">Classique</span></td></tr>
+        <tr><td>48-53</td><td><b>Alcaz Prison</b></td><td>Île d'Alcaz, Marécage d'Âprefange</td><td><span class="tag new">Nouveau</span></td></tr>
+        <tr><td>55-60</td><td><b>Blackmaw Hold</b></td><td>Azshara</td><td><span class="tag new">Nouveau</span></td></tr>
+        <tr><td>58-60</td><td><b>Shaper's Terrace</b></td><td>Nord d'Un'Goro. Apporte tes cristaux de puissance.</td><td><span class="tag new">Nouveau</span></td></tr>
+      </table>
+      <p class="muted small" style="margin-top:10px">Depuis octobre, le bonus d'XP des quêtes de donjon a été réduit de moitié et l'XP des monstres de donjon augmentée d'environ 20 %. Si un joueur du groupe est bien plus haut niveau que les monstres, personne ne gagne d'XP sur les kills. Les noms anglais n'ont pas de traduction confirmée.</p>
+    </div>
+  </section>
+
+  <!-- SURVIE -->
+  <section class="view" id="v-survie">
+    <div class="panel">
+      <h2>Survivre en solo sur un royaume JcJ</h2>
+      <div class="kv">
+        <div class="k"><b>Évite Strangleronce</b>C'est la zone de gank par excellence. Les Rives Claires couvrent la même tranche et sont plus intéressantes, même si elles restent contestées.</div>
+        <div class="k"><b>Un cooldown en réserve</b>Nova de givre, Transfert et, dès le 56, Bloc de glace. Ne grille pas tout sur un monstre si un ennemi rôde.</div>
+        <div class="k"><b>Burst d'Arcane</b>Présence spirituelle + Colère des arcanes à 4 charges fait très mal d'un coup. Garde-le pour un joueur qui t'attaque.</div>
+        <div class="k"><b>Voleurs et druides</b>Métamorphose dès qu'ils sortent du camouflage, puis prends de la distance.</div>
+        <div class="k"><b>Jamais en sous-vie</b>Mange et bois après chaque combat, ta nourriture et ton eau sont gratuites.</div>
+        <div class="k"><b>Si on te camp</b>Change de zone ou téléporte-toi au lieu de revenir mourir. Lie ta pierre de foyer à un hub que tu vas réutiliser.</div>
+        <div class="k"><b>Mille Pointes</b>Possible vers 30-33 pour les quêtes neutres des Salines, mais la zone grouille de Horde et n'a pas de village Alliance proche.</div>
+        <div class="k"><b>Repos</b>Déconnecte-toi toujours en auberge ou en capitale. La tente de camp remplit ton repos jusqu'à 5 % d'un niveau.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Données de talents : calculateur Kami Labs, d'après les notes de lancement du 2 novembre 2026. L'ordre des points est une proposition de leveling solo, pas un build officiel.<br>
+    Icônes chargées depuis le CDN de Wowhead quand il est joignable, icônes dessinées sinon. World of Warcraft et ses icônes appartiennent à Blizzard Entertainment. Site de fan, sans lien avec Blizzard.
+  </footer>
+</div>
+<div id="tip"></div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- Données (calculateur Kami Labs, notes du 2 nov. 2026) ---------- */
+var TREES=[{"s":"arcane","n":"Arcanes","t":[["1.1",1,1,2,"Spécialisation Baguette","Augmente de 25% les points de dégâts que vous infligez avec une Baguette.",null,1],["1.3",1,2,5,"Canalisation améliorée","Confère à votre sort Projectiles des arcanes 100 % de chances et à vos sorts Déflagration des arcanes et Colère des arcanes 70 % de chances de ne pas voir leur incantation interrompue lorsque vous subissez des dégâts.",null,1],["2.4",1,3,3,"Résistance des arcanes","Augmente votre armure d'un montant égal à 75 % de votre Intelligence.",null,1],["2.1",2,1,2,"Subtilité des arcanes","Réduit de 15 la résistance de votre cible à tous les types de magie, et diminue de 30% la menace générée par vos sorts d'Arcanes.",null,1],["2.2",2,2,2,"Absorption de magie","Augmente toutes les résistances de 10. Tous les sorts auxquels vous résistez entièrement restaurent 2% de votre total de mana. Temps de recharge d'1 sec.",null,1],["2.3",2,3,5,"Concentration des arcanes","Vous confère 10% de chances d'entrer dans un état \"Idées claires\" après avoir infligé des dégâts avec un sort à la cible. Cet état réduit le coût en mana de votre prochain sort de 100%.",null,1],["4.4",2,4,2,"Barrage de projectiles","Confère à votre sort Déflagration des arcanes 40 % de chances, et à vos sorts Colère des arcanes, Boule de feu, Éclair de givre et Éclair de givrefeu 20 % de chances de réduire de 50 % la durée de canalisation de votre prochain sort Projectiles des arcanes, de réduire son coût en mana de 100 % et de faire tirer des projectiles toutes les 0,5 s.",null,1],["3.1",3,1,2,"Géométrie des arcanes","Augmente la portée de vos sorts des Arcanes de 6 m.",null,1],["3.2",3,2,3,"Impact des arcanes","Augmente de 6 % les chances de coup critique de vos sorts des arcanes.",null,1],["3.4",3,4,1,"Déflagration des arcanes","Frappe la cible avec de l'énergie et lui inflige 33 à 39 points de dégâts des arcanes. Chaque fois que vous lancez Déflagration des arcanes, vous gagnez un montant de dégâts des sorts égal à 12 % de votre Intelligence, mais le coût en mana de Déflagration des arcanes augmente de 100 %. Effet cumulable jusqu'à 4 fois. Dure 18 sec à partir de la première application.",null,0],["4.1",4,1,2,"Sauvegarde des arcanes","Réduit de 33 % le mana perdu par point de dégâts subi lorsque votre sort Bouclier de mana est actif et augmente de 50 % les résistances conférées par votre sort Armure du mage.",null,1],["4.2",4,2,2,"Contresort amélioré","Votre Contresort réduit également la cible au silence pendant 4 s.",null,1],["4.3",4,3,3,"Méditation des arcanes","Vous confère 50% de votre vitesse de récupération du mana normale pendant l'incantation.","2.3",1],["4.4-2",4,4,1,"Colère des arcanes","Lance sur la cible adverse un projectile d'énergie arcanique pure qui inflige 121 à 147 points de dégâts des arcanes. Ce sort gagne un montant supplémentaire de dégâts des sorts égal à 5 % de votre maximum de mana.","3.4",0],["5.2",5,2,1,"Présence spirituelle","Lorsque cette technique est activée, votre prochain sort de mage dont le temps d'incantation est inférieur à 10 sec. devient un sort instantané.",null,0],["5.3",5,3,5,"Esprit des arcanes","Augmente de 10 % votre intelligence et de 100 % les points de dégâts supplémentaires infligés par les coups critiques de vos sorts des arcanes.",null,1],["6.3",6,3,3,"Instabilité des arcanes","Augmente les dégâts infligés par vos sorts de 3 % et vos chances de coup critique de 3 %.",null,1],["7.2",7,2,1,"Pouvoir des arcanes","Pendant 15 sec, vos sorts infligent 30 % de points de dégâts supplémentaires et ils vous coûtent 30 % de points de mana supplémentaires.","5.2",0]]},{"s":"fire","n":"Feu","t":[["1.2",1,2,5,"Incinération","Augmente de 10 % les chances de coup critique de vos sorts Trait de feu, Javelot de glace, Déflagration des arcanes et Brûlure.",null,1],["1.3",1,3,5,"Empressement","Réduit le temps d'incantation de vos sorts Boule de feu, Éclair de givrefeu et Colère des arcanes de 0,5 s.",null,1],["2.1",2,1,5,"Enflammer","Les coups critiques infligés par vos sorts de Feu enflamment la cible et lui infligent 40% des points de dégâts de vos sorts en plus, en 4 sec.",null,1],["2.2",2,2,2,"Jet de flammes","Augmente la portée de vos sorts de Feu de 6 mètres.",null,1],["2.3",2,3,3,"Impact","Confère 10 % de chances à vos sorts de Feu d'étourdir vos cibles pendant 2 sec.",null,1],["3.1",3,1,3,"Âme ardente","Vos sorts de Feu gagnent 70% de chances de ne pas être retardés lorsque vous subissez des dégâts pendant l'incantation, et la menace qu'ils génèrent est réduite de 30%.",null,1],["3.2",3,2,3,"Choc de flammes amélioré","Augmente de 15% vos chances de réaliser un coup critique avec votre sort Choc de flammes.",null,1],["3.3",3,3,1,"Explosion pyrotechnique","Lance un immense rocher enflammé qui inflige 100 à 132 points de dégâts de Feu et 44 points de dégâts de Feu supplémentaires en 12 sec.",null,0],["1.1",3,4,2,"Trait de feu amélioré","Réduit le temps de recharge de votre sort Trait de feu de 2 s et augmente sa portée de 15 m.",null,1],["4.1",4,1,3,"Brûlure améliorée","Votre sort Brûlure a 100 % de chances de rendre votre cible vulnérable aux dégâts de feu. Cette vulnérabilité augmente tous les dégâts de feu que vous infligez à votre cible de 3 % et dure 30 sec. Cumulable jusqu'à 5 fois.",null,1],["4.2",4,2,2,"Gardien de feu amélioré","Confère à votre Gardien de feu 20% de chances de renvoyer les sorts de Feu tant qu'il est actif.",null,1],["4.3",4,3,1,"Réchauffement","Les coups critiques non périodiques obtenus avec Boule de feu, Éclair de givrefeu, Trait de feu et Brûlure réduisent de 25 % le temps d'incantation de votre prochaine explosion pyrotechnique lancée dans les 20 sec. Cet effet est cumulable jusqu'à 3 fois. Trait de feu confère un cumul supplémentaire chaque fois que ce sort inflige des dégâts.","3.3",1],["4.4",4,4,3,"Maître des éléments","Vos coups critiques de feu et de givre vous rendent 30 % du coût en mana de base de ces sorts.",null,1],["5.2",5,2,3,"Masse critique","Augmente de 6% vos chances d'infliger un coup critique avec vos sorts de Feu.",null,1],["5.3",5,3,1,"Vague explosive","Une vague de flammes se propage autour du personnage lanceur, infligeant 153 à 185 points de dégâts de feu aux personnages adverses pris dans l'explosion et les hébétant pendant 6 sec, ce qui réduit leur vitesse de déplacement de 50 %.",null,0],["6.3",6,3,3,"Puissance du feu","Augmente de 3 % les points de dégâts infligés par vos sorts de Feu pour chacun de vos effets de Feu présents sur la cible, jusqu'à un maximum de 12 %. Les effets qui mêlent plusieurs écoles de magie ne sont pas pris en compte.",null,1],["7.2",7,2,1,"Combustion","Lorsqu'il est activé, ce sort augmente de 10 % les chances de coup critique chaque fois que vous touchez une cible avec un sort de feu. L'effet dure jusqu'à ce que vous ayez infligé 3 coups critiques non périodiques avec des sorts de feu.","5.2",0]]},{"s":"frost","n":"Givre","t":[["1.1",1,1,2,"Protection contre le Givre","Augmente de 30 % l'armure et les résistances conférées par vos sorts Armure de givre et Armure de glace, et augmente les dégâts absorbés par vos sorts Barrière de glace et Gardien de givre de 20 %. Votre Gardien de givre a également 20 % de chances d'annuler le sort dont il a absorbé les dégâts.",null,1],["1.2",1,2,5,"Éclair de givre amélioré","Réduit de 0,5 sec le temps d'incantation de votre sort Éclair de givre.",null,1],["1.3",1,3,3,"Précision","Améliore de 6 % vos chances de toucher avec tous vos sorts.",null,1],["2.1",2,1,5,"Éclats de glace","Augmente de 100% les points de dégâts supplémentaires infligés par les coups critiques de vos sorts de Givre.",null,1],["2.4",2,2,3,"Morsure de givre","Donne à vos effets de gel 15% de chances de geler la cible pendant 5 sec.",null,1],["2.3",2,3,2,"Nova de givre améliorée","Réduit le temps de recharge du sort Nova de givre de 4 secondes.",null,1],["2.2",2,4,3,"Gel prolongé","Augmente de 33 % la durée de vos effets d'engourdissement et réduit la vitesse de la cible de 10 % supplémentaires.",null,1],["3.2",3,1,3,"Canalisation du givre","Réduit de 15% le coût en mana de vos sorts de Givre, et réduit de 30% la menace qu'ils génèrent.",null,1],["3.4",3,2,3,"Blizzard amélioré","Ajoute un effet d'engourdissement à votre sort Blizzard. Il réduit la vitesse de déplacement de la cible de 40 % pendant 1,5 s.",null,1],["3.3",3,3,1,"Javelot de glace","Inflige 28 à 33 points de dégâts de givre à une cible ennemie. Inflige 300 % de dégâts de givre supplémentaires aux cibles gelées.",null,0],["4.1",4,1,2,"Allonge arctique","Augmente la portée de vos sorts Éclair de givre, Javelot de glace et Blizzard et les rayons d'effet de vos sorts Nova de givre et Cône de froid de 20 %.",null,1],["4.2",4,2,1,"Bloc de glace","Vous enveloppe dans un bloc de glace qui vous protège des attaques physiques et des sorts pendant 10 sec. En contrepartie, vous ne pouvez pas attaquer, vous déplacer ni lancer de sorts.",null,0],["4.4",4,4,3,"Fracasser","Augmente de 50 % les chances de coup critique de tous vos sorts contre les cibles gelées.",null,1],["5.1",5,1,3,"Cône de froid amélioré","Augmente de 35% les points de dégâts infligés par votre sort Cône de froid.",null,1],["5.2",5,2,1,"Morsure du froid","Réinitialise les temps de recharge restants de tous vos autres sorts de givre.",null,0],["5.3",5,3,2,"Doigts de givre","Donne à vos effets d'engourdissement 15 % de chances de déclencher l'effet Doigts de givre, qui permet à vos 2 prochains sorts d'agir comme si la cible était gelée. Dure 15 sec.","3.3",1],["6.3",6,3,5,"Froid hivernal","Confère à vos sorts Éclair de givre et Javelot de glace renforcé par Doigts de givre 100 % de chances d'appliquer l'effet Froid de l'hiver, qui augmente les dégâts infligés à la cible par votre prochain sort Cône de froid de 20 % ainsi que de 7 % de vos dégâts des sorts. Cumulable jusqu'à 5 fois.",null,1],["7.2",7,2,1,"Barrière de glace","Vous protège à l'aide d'un bouclier qui absorbe 448 points de dégâts (plus 10 % de votre puissance des sorts de givre) et augmente vos dégâts de givre de 15 % pendant 1 min. Tant que le bouclier est actif, vos dégâts de givre augmentent de 5 % supplémentaires, et vos incantations ne sont plus interrompues lorsque vous subissez des dégâts.","5.2",0]]}];
+
+/* ---------- Ordre de leveling (proposition) : [arbre, id, nombre de points] ---------- */
+var PLAN=[
+ ["arcane","1.3",5],["arcane","4.4",2],["arcane","2.3",3],["arcane","3.4",1],["arcane","2.3",2],
+ ["arcane","3.2",2],["arcane","4.4-2",1],["arcane","3.2",1],["arcane","4.3",3],["arcane","5.2",1],
+ ["arcane","5.3",5],["arcane","6.3",3],["arcane","3.1",1],["arcane","7.2",1],
+ ["frost","1.3",3],["frost","1.1",2],["frost","2.4",3],["frost","2.3",2],["frost","2.2",3],
+ ["frost","3.3",1],["frost","3.4",1],["frost","4.2",1],["frost","4.1",2],["frost","4.4",2]
+];
+var ORDER=[]; PLAN.forEach(function(p){for(var i=0;i<p[2];i++)ORDER.push({tree:p[0],id:p[1]});});
+ORDER.forEach(function(o,i){o.level=10+i;});
+
+/* ---------- Icônes stylisées (SVG maison) ---------- */
+var SYM={
+ wand:'<path d="M6 26 L22 10" stroke-width="3"/><path d="M24 4l1.6 3.6L29 9l-3.4 1.4L24 14l-1.6-3.6L19 9l3.4-1.4z" fill="currentColor" stroke="none"/>',
+ swirl:'<path d="M16 16m-1 0a1 1 0 1 1 2 0a3 3 0 1 1-6 0a5 5 0 1 1 10 0a7 7 0 1 1-14 0a9 9 0 1 1 18 0"/>',
+ shield:'<path d="M16 4l10 4v7c0 6-4.5 10.5-10 13C10.5 25.5 6 21 6 15V8z"/><path d="M16 9v14M11 14h10"/>',
+ eye:'<path d="M3 16c4-6 9-9 13-9s9 3 13 9c-4 6-9 9-13 9s-9-3-13-9z"/><circle cx="16" cy="16" r="4" fill="currentColor"/>',
+ orb:'<circle cx="16" cy="16" r="9"/><path d="M16 2v5M16 25v5M2 16h5M25 16h5" />',
+ spark:'<path d="M16 3l3 10 10 3-10 3-3 10-3-10-10-3 10-3z" fill="currentColor" stroke="none"/>',
+ missiles:'<path d="M5 22l9-9M10 27l12-12M17 26l9-9"/><path d="M14 13l-4 0 4-4zM22 15l-4 0 4-4zM26 17l-4 0 4-4z" fill="currentColor"/>',
+ geo:'<circle cx="16" cy="16" r="12"/><path d="M16 5l9.5 16.5h-19z"/><circle cx="16" cy="16" r="2.5" fill="currentColor"/>',
+ burst:'<path d="M16 2l2.5 8 7.5-4-4 7.5 8 2.5-8 2.5 4 7.5-7.5-4-2.5 8-2.5-8-7.5 4 4-7.5-8-2.5 8-2.5-4-7.5 7.5 4z" fill="currentColor" stroke="none"/>',
+ blast:'<circle cx="16" cy="16" r="6" fill="currentColor"/><circle cx="16" cy="16" r="11" stroke-dasharray="2 3"/>',
+ ward:'<path d="M16 4l10 4v7c0 6-4.5 10.5-10 13C10.5 25.5 6 21 6 15V8z"/><circle cx="16" cy="15" r="4"/>',
+ silence:'<circle cx="16" cy="16" r="11"/><path d="M8 8l16 16"/>',
+ moon:'<path d="M21 5a11 11 0 1 0 6 19A9 9 0 0 1 21 5z" fill="currentColor" stroke="none"/><circle cx="11" cy="9" r="1.2" fill="currentColor"/>',
+ bolt:'<path d="M18 2L7 18h7l-2 12 13-17h-7z" fill="currentColor" stroke="none"/>',
+ hourglass:'<path d="M9 4h14M9 28h14M10 4c0 7 12 7 12 12S10 21 10 28M22 4c0 7-12 7-12 12s12 5 12 12"/>',
+ mind:'<circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="7"/><circle cx="16" cy="16" r="2.5" fill="currentColor"/>',
+ zig:'<path d="M4 18l5-8 5 12 5-14 5 10 4-6"/>',
+ crown:'<path d="M5 24l2-13 6 6 3-9 3 9 6-6 2 13z" fill="currentColor" stroke="none"/><path d="M5 27h22"/>',
+ flame:'<path d="M16 3c2 6 9 9 9 16a9 9 0 0 1-18 0c0-5 4-7 4-11 3 2 3 5 3 5s2-4 2-10z" fill="currentColor" stroke="none"/>',
+ rock:'<circle cx="18" cy="14" r="7" fill="currentColor" stroke="none"/><path d="M4 28l8-8M8 28l6-6M3 23l7-7"/>',
+ snow:'<path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/><path d="M13 6l3 3 3-3M13 26l3-3 3 3"/>',
+ cube:'<path d="M16 4l11 6v12l-11 6-11-6V10z"/><path d="M5 10l11 6 11-6M16 16v12"/>',
+ shard:'<path d="M16 2l6 14-6 14-6-14z" fill="currentColor" stroke="none"/>',
+ target:'<circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><path d="M16 2v6M16 24v6M2 16h6M24 16h6"/>',
+ ring:'<circle cx="16" cy="16" r="5" fill="currentColor"/><circle cx="16" cy="16" r="12" stroke-dasharray="3 2"/>',
+ cone:'<path d="M4 16L28 6v20z"/><path d="M12 16h12M14 12l8-2M14 20l8 2"/>'
+};
+var ICON={
+ arcane:{"1.1":"wand","1.3":"swirl","2.4":"shield","2.1":"eye","2.2":"orb","2.3":"spark","4.4":"missiles","3.1":"geo","3.2":"burst","3.4":"blast","4.1":"ward","4.2":"silence","4.3":"moon","4.4-2":"bolt","5.2":"hourglass","5.3":"mind","6.3":"zig","7.2":"crown"},
+ fire:{"1.2":"burst","1.3":"hourglass","2.1":"flame","2.2":"target","2.3":"bolt","3.1":"flame","3.2":"ring","3.3":"rock","1.1":"spark","4.1":"flame","4.2":"ward","4.3":"burst","4.4":"orb","5.2":"target","5.3":"ring","6.3":"flame","7.2":"crown"},
+ frost:{"1.1":"shield","1.2":"shard","1.3":"target","2.1":"shard","2.4":"snow","2.3":"ring","2.2":"hourglass","3.2":"swirl","3.4":"snow","3.3":"shard","4.1":"geo","4.2":"cube","4.4":"burst","5.1":"cone","5.2":"moon","5.3":"spark","6.3":"snow","7.2":"ward"}
+};
+var PAL={arcane:["#3a1d78","#8b5cf6","#f1e4ff"],fire:["#6a1c06","#ff7a2f","#ffe2c4"],frost:["#0c3561","#3fa9f5","#e3f5ff"]};
+/* ---------- Icônes officielles (chargées depuis un CDN externe) ----------
+ * ICON_BASE : adresse où chercher les images, {name} est remplacé par le nom de l'icône.
+ * Mets ICON_BASE = "" pour revenir aux icônes dessinées. Si une image ne charge pas,
+ * l'icône dessinée reste affichée en dessous. */
+var ICON_BASE="https://wow.zamimg.com/images/wow/icons/large/{name}.jpg";
+var OFFICIAL={"arcane":{"1.1":"inv_wand_01","1.3":"spell_nature_starfall","2.4":"spell_arcane_arcaneresilience","2.1":"spell_holy_dispelmagic","2.2":"spell_nature_astralrecalgroup","2.3":"spell_shadow_manaburn","4.4":"ability_mage_missilebarrage","3.1":"inv_ability_mage_radiantspark","3.2":"spell_nature_wispsplode","3.4":"spell_arcane_blast","4.1":"spell_shadow_detectlesserinvisibility","4.2":"spell_frost_iceshock","4.3":"spell_shadow_siphonmana","4.4-2":"ability_mage_netherwindpresence","5.2":"spell_nature_enchantarmor","5.3":"spell_shadow_charm","6.3":"spell_shadow_teleport","7.2":"spell_nature_lightning"},"fire":{"1.2":"spell_fire_flameshock","1.3":"spell_fire_flamebolt","2.1":"spell_fire_incinerate","2.2":"spell_fire_flare","2.3":"spell_fire_meteorstorm","3.1":"spell_fire_fire","3.2":"spell_fire_selfdestruct","3.3":"spell_fire_fireball02","1.1":"spell_fire_lavaspawn","4.1":"spell_fire_soulburn","4.2":"spell_fire_firearmor","4.3":"spell_fire_firebolt","4.4":"spell_fire_masterofelements","5.2":"spell_nature_wispheal","5.3":"spell_holy_excorcism_02","6.3":"spell_fire_immolation","7.2":"spell_fire_sealoffire"},"frost":{"1.1":"spell_frost_frostward","1.2":"spell_frost_frostbolt02","1.3":"spell_ice_magicdamage","2.1":"spell_frost_iceshard","2.4":"spell_frost_frostarmor","2.3":"spell_frost_freezingbreath","2.2":"spell_frost_wisp","3.2":"spell_frost_stun","3.4":"spell_frost_icestorm","3.3":"spell_frost_frostblast","4.1":"spell_shadow_darkritual","4.2":"spell_frost_frost","4.4":"spell_frost_frostshock","5.1":"spell_frost_glacier","5.2":"spell_frost_wizardmark","5.3":"ability_mage_wintersgrasp","6.3":"spell_frost_chillingblast","7.2":"spell_ice_lament"}};
+function iconSVG(tree,id){
+  var name=(OFFICIAL[tree]||{})[id], img='';
+  if(ICON_BASE&&name)img='<img class="official" alt="" loading="lazy" src="'+ICON_BASE.replace('{name}',name)+'" onerror="this.remove()">';
+  return drawnSVG(tree,id)+img;
+}
+function drawnSVG(tree,id){
+  var p=PAL[tree], s=SYM[(ICON[tree]||{})[id]]||SYM.spark, gid='g'+tree+id.replace(/\W/g,'');
+  return '<svg viewBox="0 0 32 32" aria-hidden="true"><defs><radialGradient id="'+gid+'" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="'+p[1]+'"/><stop offset="1" stop-color="'+p[0]+'"/></radialGradient></defs>'+
+    '<rect width="32" height="32" fill="url(#'+gid+')"/><rect x="1" y="1" width="30" height="30" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="2"/>'+
+    '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:'+p[2]+'">'+s+'</g>'+
+    '<rect width="32" height="14" fill="rgba(255,255,255,.08)"/></svg>';
+}
+
+/* ---------- Etat ---------- */
+function load(k,d){try{var v=localStorage.getItem(k);return v===null?d:JSON.parse(v);}catch(e){return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var level=load('gm_level',30);
+var TMAP={}; TREES.forEach(function(t){TMAP[t.s]={};t.t.forEach(function(x){TMAP[t.s][x[0]]=x;});});
+
+function pointsAt(lv){
+  var n=Math.max(0,Math.min(ORDER.length,lv-9)), pts={arcane:{},fire:{},frost:{}};
+  for(var i=0;i<n;i++){var o=ORDER[i];pts[o.tree][o.id]=(pts[o.tree][o.id]||0)+1;}
+  return pts;
+}
+function firstLevel(tree,id){for(var i=0;i<ORDER.length;i++)if(ORDER[i].tree===tree&&ORDER[i].id===id)return ORDER[i].level;return null;}
+function lastLevel(tree,id){var l=null;ORDER.forEach(function(o){if(o.tree===tree&&o.id===id)l=o.level;});return l;}
+
+/* ---------- Rendu des arbres ---------- */
+var treesEl=document.getElementById('trees');
+function renderTrees(){
+  var pts=pointsAt(level), next=ORDER[level-9]||null; /* point du niveau suivant */
+  treesEl.innerHTML='';
+  TREES.forEach(function(t){
+    var total=0; for(var k in pts[t.s])total+=pts[t.s][k];
+    var div=document.createElement('div'); div.className='tree '+t.s;
+    var h='<div class="bg"></div><div class="head"><b>'+t.n+'</b><span>'+total+' pts</span></div><div class="grid">';
+    var arrows='';
+    var cells={}; t.t.forEach(function(x){cells[x[1]+'-'+x[2]]=x;});
+    t.t.forEach(function(x){ if(x[6]){var r=TMAP[t.s][x[6]];
+      var x1=(r[2]-.5)*25, y1=((r[1]-.5)/7*100), y2=((x[1]-.5)/7*100);
+      var have=(pts[t.s][r[0]]||0)>=r[3];
+      arrows+='<line x1="'+x1+'%" y1="calc('+y1+'% + 24px)" x2="'+x1+'%" y2="calc('+y2+'% - 28px)" />';
+      arrows+='<g data-a="'+x1+','+y1+','+y2+','+(have?1:0)+'"></g>';
+    }});
+    for(var r=1;r<=7;r++)for(var c=1;c<=4;c++){
+      var x=cells[r+'-'+c];
+      if(!x){h+='<div class="cell"></div>';continue;}
+      var have=pts[t.s][x[0]]||0, cls='node';
+      if(!x[7])cls+=' active-sp';
+      if(have>=x[3])cls+=' max'; else if(have>0)cls+=' partial'; else cls+=' locked';
+      if(next&&next.tree===t.s&&next.id===x[0])cls+=' next';
+      h+='<div class="cell"><div class="'+cls+'" tabindex="0" data-t="'+t.s+'" data-id="'+x[0]+'">'+iconSVG(t.s,x[0])+'<span class="rank">'+have+'/'+x[3]+'</span></div></div>';
+    }
+    h+='</div>';
+    div.innerHTML=h;
+    /* flèches de prérequis */
+    var grid=div.querySelector('.grid');
+    var svg=document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.setAttribute('class','arrows');
+    t.t.forEach(function(x){ if(!x[6])return; var rq=TMAP[t.s][x[6]];
+      var have=(pts[t.s][rq[0]]||0)>=rq[3];
+      var col=have?'#f3d58c':'#5a5060';
+      var cx=(rq[2]-.5)/4, y1=(rq[1]-.5)/7, y2=(x[1]-.5)/7;
+      var g=document.createElementNS('http://www.w3.org/2000/svg','g');
+      g.innerHTML='<line x1="'+cx*100+'%" x2="'+cx*100+'%" y1="'+(y1*100)+'%" y2="'+(y2*100)+'%" stroke="'+col+'" stroke-width="5" stroke-linecap="round" opacity=".9"/>';
+      svg.appendChild(g);
+    });
+    grid.insertBefore(svg,grid.firstChild);
+    treesEl.appendChild(div);
+  });
+  /* compteurs */
+  var tot={arcane:0,fire:0,frost:0}; ['arcane','fire','frost'].forEach(function(s){for(var k in pts[s])tot[s]+=pts[s][k];});
+  document.getElementById('counts').innerHTML=
+    '<span class="count">Points dépensés : <b style="color:var(--gold2)">'+Math.max(0,Math.min(51,level-9))+'</b> / 51</span>'+
+    '<span class="count" style="color:#d7b8ff">Arcanes '+tot.arcane+'</span><span class="count" style="color:#ffc08f">Feu '+tot.fire+'</span><span class="count" style="color:#b8e6ff">Givre '+tot.frost+'</span>';
+  var nb=document.getElementById('nextbox');
+  if(next){var x=TMAP[next.tree][next.id], have=(pts[next.tree][next.id]||0);
+    nb.innerHTML='<div class="node ic '+(x[7]?'':'active-sp')+'" style="width:40px;height:40px">'+iconSVG(next.tree,next.id)+'</div><div><b style="font-family:Cinzel,serif;color:var(--gold2)">Au niveau '+next.level+' :</b> '+x[4]+' <span class="muted">(rang '+(have+1)+'/'+x[3]+')</span><div class="muted small">'+x[5]+'</div></div>';
+  } else nb.innerHTML='<div><b style="font-family:Cinzel,serif;color:var(--gold2)">Build terminé.</b> <span class="muted">Les 51 points sont placés. Pense à la double spécialisation pour un build donjon ou JcJ.</span></div>';
+}
+
+/* ---------- Ordre ---------- */
+function renderOrder(){
+  var el=document.getElementById('order'), h='';
+  var acc={};
+  ORDER.forEach(function(o){var x=TMAP[o.tree][o.id]; acc[o.tree+o.id]=(acc[o.tree+o.id]||0)+1;
+    var cls='oitem'+(o.level<=level?' done':'')+(o.level===level+1?' cur':'');
+    h+='<div class="'+cls+'" data-l="'+o.level+'"><span class="l">'+o.level+'</span><span class="mini">'+iconSVG(o.tree,o.id)+'</span><span>'+x[4]+' <span class="muted">'+acc[o.tree+o.id]+'/'+x[3]+'</span></span></div>';
+  });
+  el.innerHTML=h;
+}
+document.getElementById('order').addEventListener('click',function(e){var it=e.target.closest('.oitem');if(it)setLevel(+it.dataset.l);});
+
+/* ---------- Tooltip ---------- */
+var tip=document.getElementById('tip');
+function showTip(node,ev){
+  var t=node.dataset.t,id=node.dataset.id,x=TMAP[t][id],pts=pointsAt(level),have=pts[t][id]||0;
+  var fl=firstLevel(t,id), ll=lastLevel(t,id);
+  var req=x[6]?'<div class="r">Requiert '+TMAP[t][x[6]][4]+' ('+TMAP[t][x[6]][3]+' pts)</div>':'';
+  var lv=fl?('Dans le build : niveau '+fl+(ll!==fl?' → '+ll:'')):'Hors du build de leveling';
+  tip.innerHTML='<div class="t">'+x[4]+'</div><div class="r">'+(x[7]?'Passif':'Sort actif')+' · Rang '+have+'/'+x[3]+' · Palier '+x[1]+' (requiert '+(x[1]-1)*5+' pts)</div>'+req+'<div class="d">'+x[5]+'</div><div class="lv">'+lv+'</div>';
+  tip.classList.add('on'); moveTip(ev,node);
+}
+function moveTip(ev,node){
+  var r=node.getBoundingClientRect(), tw=tip.offsetWidth, th=tip.offsetHeight;
+  var x=r.right+10, y=r.top;
+  if(x+tw>window.innerWidth-8)x=r.left-tw-10;
+  if(x<8)x=8; if(y+th>window.innerHeight-8)y=window.innerHeight-th-8;
+  tip.style.left=x+'px'; tip.style.top=Math.max(8,y)+'px';
+}
+treesEl.addEventListener('mouseover',function(e){var n=e.target.closest('.node');if(n)showTip(n,e);});
+treesEl.addEventListener('mouseout',function(e){if(e.target.closest('.node'))tip.classList.remove('on');});
+treesEl.addEventListener('focusin',function(e){var n=e.target.closest('.node');if(n)showTip(n,e);});
+treesEl.addEventListener('focusout',function(){tip.classList.remove('on');});
+treesEl.addEventListener('click',function(e){var n=e.target.closest('.node');if(n){showTip(n,e);var fl=firstLevel(n.dataset.t,n.dataset.id);}});
+document.addEventListener('scroll',function(){tip.classList.remove('on');},true);
+
+/* ---------- Niveau ---------- */
+var slider=document.getElementById('slider');
+function setLevel(l){level=Math.max(10,Math.min(60,l));slider.value=level;document.getElementById('lvl').textContent=level;save('gm_level',level);renderTrees();renderOrder();}
+slider.addEventListener('input',function(){setLevel(+slider.value);});
+document.getElementById('minus').onclick=function(){setLevel(level-1);};
+document.getElementById('plus').onclick=function(){setLevel(level+1);};
+
+/* ---------- Route ---------- */
+var ROUTE=[
+ {lv:"30-31",z:"Austrivage (contreforts de Hautebrande)",d:"Quêtes d'Austrivage et quête du donjon de Dalaran auprès de l'émissaire Jacques. Moulin-de-Tarren (Horde) est tout près, reste vigilant.",t:[["pvp","Zone contestée"]]},
+ {lv:"30-33",z:"Cité de Dalaran",d:"Donjon dans les montagnes d'Alterac, entrée par les égouts. À faire tant que tu es dans la tranche.",t:[["new","Nouveau donjon"],["dj","Groupe"]]},
+ {lv:"30-35",z:"Hautes-terres d'Arathi",d:"Base au Refuge de l'Ornière, pas de quête préliminaire. Prends le point de vol et toutes les quêtes du refuge. Garde les finales de groupe pour la fin.",t:[]},
+ {lv:"32-34",z:"Salines de Mille Pointes",d:"Option : les quêtes neutres de la course de Mirage. Beaucoup de Horde dans la zone, pas de village Alliance proche.",t:[["opt","Optionnel"],["pvp","Risqué"]]},
+ {lv:"35-40",z:"Rives Claires",d:"Nouvelle zone, plus de 150 quêtes entre 35 et 45. Le port de Powderfuse la relie à Tanaris par bateau.",t:[["new","Nouvelle zone"],["pvp","Contestée"]]},
+ {lv:"35-40",z:"La cité Submergée",d:"Donjon au large de Strangleronce, à l'ouest de Grom'gol. L'entrée est sous l'eau.",t:[["new","Nouveau donjon"],["dj","Groupe"]]},
+ {lv:"40",z:"Retour en capitale",d:"Monture, double spécialisation, portails, Pouvoir des arcanes. Passe tous tes rangs de sorts.",t:[["mile","Palier clé"]]},
+ {lv:"40-45",z:"Fin des Rives Claires + Bastion Krol'dok",d:"Termine les chaînes de la zone, puis le donjon Bastion Krol'dok (40-45).",t:[["new","Nouveau donjon"]]},
+ {lv:"43-47",z:"Tanaris, Feralas ou Hinterlands",d:"Bases à Gadgetzan, au Bastion de Plumelune ou au Nid-de-l'Aigle. Palier d'Héritage au niveau 45.",t:[["mile","Héritage 45"]]},
+ {lv:"45-50",z:"Tanaris / Feralas ou Gorge des Vents brûlants",d:"Donjons possibles : Zul'Farrak, Maraudon, Uldaman. Alcaz Prison (48-53) sur l'île d'Alcaz, au Marécage d'Âprefange.",t:[["dj","Donjons"]]},
+ {lv:"50-55",z:"Un'Goro, Gangrebois ou Maleterres de l'Ouest",d:"Refuge des Marshal, Gangrebois ou Camp du Noroît. Garde tes cristaux de puissance d'Un'Goro pour Shaper's Terrace.",t:[]},
+ {lv:"55-60",z:"Maleterres de l'Est ou Berceau-de-l'Hiver",d:"Chapelle de l'Espoir de Lumière ou Long-guet, plus les fins de chaînes des Steppes ardentes et de Gangrebois. Donjons Blackmaw Hold (55-60, Azshara) et Shaper's Terrace (58-60, Un'Goro).",t:[["new","Nouveaux donjons"]]},
+ {lv:"60",z:"Mont Hyjal",d:"Zone de fin de jeu, par la gorge de Sombrevent au sud du Berceau-de-l'Hiver. Félicitations !",t:[["new","Fin de jeu"],["mile","60"]]}
+];
+var done=load('gm_route',{});
+function renderRoute(){
+  var h='',n=0;
+  ROUTE.forEach(function(s,i){var ok=!!done[i]; if(ok)n++;
+    h+='<div class="step"><label class="dot'+(ok?' ok':'')+'" title="Marquer comme fait"><input type="checkbox" data-i="'+i+'"'+(ok?' checked':'')+'></label>'+
+       '<div class="card'+(ok?' done':'')+'"><div class="top"><span class="lvtag">'+s.lv+'</span><b class="z">'+s.z+'</b>'+s.t.map(function(t){return '<span class="tag '+t[0]+'">'+t[1]+'</span>';}).join('')+'</div><div class="muted" style="margin-top:4px">'+s.d+'</div></div></div>';
+  });
+  document.getElementById('route').innerHTML=h;
+  document.getElementById('progbar').style.width=(n/ROUTE.length*100)+'%';
+}
+document.getElementById('route').addEventListener('change',function(e){var i=e.target.dataset.i;if(i==null)return;done[i]=e.target.checked;save('gm_route',done);renderRoute();});
+
+/* ---------- Onglets ---------- */
+var tabs=document.getElementById('tabs');
+function show(v){[].forEach.call(tabs.children,function(b){b.classList.toggle('on',b.dataset.v===v);});
+  [].forEach.call(document.querySelectorAll('section.view'),function(s){s.classList.toggle('on',s.id==='v-'+v);});
+  tip.classList.remove('on');}
+tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;show(b.dataset.v);try{history.replaceState(null,'','#'+b.dataset.v);}catch(err){location.hash=b.dataset.v;}});
+var h0=(location.hash||'').slice(1); if(['talents','route','rotation','donjons','survie'].indexOf(h0)>=0)show(h0);
+
+setLevel(level); renderRoute();
+})();
+</script>
+</body>
+</html>
