@@ -363,3 +363,53 @@ window.MAPS = {
   wpl2:{id:28,pins:[[42.9,85.1,"Camp du Noroît, point de vol","hub"]]},
   berceau:{id:618,pins:[[61.3,38.9,"Long-guet, point de vol","hub"]]}
 };
+
+/* ---------- Réorganisation : un seul continent sur le chemin principal ---------- */
+window.STEPS.push({
+  id:"foudroyees", lv:[47,50], title:"Terres foudroyées", zone:"Terres foudroyées",
+  tags:[], src:{kind:"zone",name:"games.gg, guide Blasted Lands",url:"https://games.gg/world-of-warcraft/guides/wow-forever-blasted-lands-leveling-guide/"},
+  intro:"Petite zone à faire entre 47 et 50 pour ses cinq quêtes de buffs, puis une seconde visite vers 55-57. Avant 47, les monstres du nord sont déjà à ton niveau.",
+  acces:["Par le Marais des Chagrins, puis le col au sud-est.","Point de vol du Rempart-du-Néant (Nethergarde Keep), au nord de la zone."],
+  quetes:["Prends les cinq quêtes de buffs (sangliers, basilics, vautours, hyènes, scorpides) : elles se font toutes en tuant les monstres du nord.","Ramasse les fragments de draenéthyste en chemin, ils servent à des récompenses.","Rends tout vers 49-50 et pars.","Retour vers 55-57 pour The Stones That Bind Us, près des pierres du sud."],
+  elites:[["Kirith","À 57 avec un ami (élite 55)."],["Uniting the Shattered Amulet","À deux ou trois, avec les armes Felbane."],["You Are Rakh'likh, Demon","À cinq au niveau 60, ou à zapper."]],
+  skip:[], ensuite:"Steppes ardentes."
+});
+window.MAPS.foudroyees={id:4,pins:[[65.5,24.4,"Rempart-du-Néant, point de vol","hub"]]};
+window.STEP_ORDER=["austrivage","dalaran","arathi1","alterac","rives1","citesubmergee","capitale40","rives2","arathi2","hinterlands","gorge","foudroyees","steppes","wpl1","epl","wpl2","feralas","tanaris","shendralas","ungoro","gangrebois","berceau","hyjal"];
+/* Options Kalimdor : à faire seulement si tu veux changer de décor, chacune coûte un trajet en bateau. */
+window.KALIMDOR=["feralas","tanaris","shendralas","ungoro","gangrebois","berceau"];
+/* Liste exacte des quêtes (base Questie) : [clé de zone, niveau min, niveau max] */
+window.QZ={austrivage:["austrivage",26,40],alterac:["alterac",30,42],arathi1:["arathi",28,36],arathi2:["arathi",36,44],hinterlands:["hinterlands",40,53],gorge:["gorge",42,52],foudroyees:["blasted",44,60],steppes:["steppes",48,60],wpl1:["wpl",48,54],wpl2:["wpl",54,62],epl:["epl",52,62],feralas:["feralas",40,52],tanaris:["tanaris",40,50],ungoro:["ungoro",46,58],gangrebois:["gangrebois",46,58],berceau:["berceau",52,62]};
+window.LEVELS = [
+ [30,"austrivage","Côte d'Austrivage, et la quête de Dalaran"],
+ [31,"arathi1","Arathi : Refuge de l'Ornière, Northfold","dalaran"],
+ [32,"arathi1","Arathi : Myzrael, kobolds Drywhisker","dalaran"],
+ [33,"arathi1","Arathi : Witherbark, ferme Go'Shek"],
+ [34,"alterac","Alterac depuis Austrivage"],
+ [35,"rives1","Entrée aux Rives Claires par les Carmines"],
+ [36,"rives1","Rives Claires autour de Fort-Lointain"],
+ [37,"rives1","Rives Claires : fermes et routes","citesubmergee"],
+ [38,"rives1","Rives Claires : rivières","arathi2"],
+ [39,"rives1","Rives Claires","arathi2"],
+ [40,"capitale40","En ville : monture, double spé, portails"],
+ [41,"rives2","Rives Claires : campagne de la Confrérie"],
+ [42,"rives2","Bastion Krol'dok en groupe"],
+ [43,"rives2","Fin des Rives Claires","shendralas"],
+ [44,"hinterlands","Hinterlands : Nid-de-l'Aigle","feralas"],
+ [45,"hinterlands","Hinterlands : cages Witherbark","feralas"],
+ [46,"hinterlands","Hinterlands : Skulk Rock, colliers","tanaris"],
+ [47,"gorge","Gorge des Vents brûlants : Thorium Point"],
+ [48,"gorge","Gorge : Chaudron et Slag Pit"],
+ [49,"foudroyees","Terres foudroyées : quêtes de buffs"],
+ [50,"gorge","Fin de la Gorge et des Hinterlands","ungoro"],
+ [51,"steppes","Steppes ardentes : Morgan's Vigil","ungoro"],
+ [52,"wpl1","Maleterres de l'Ouest : Felstone, Dalson","gangrebois"],
+ [53,"steppes","Steppes ardentes : Dreadmaul Rock","gangrebois"],
+ [54,"steppes","Fin des Steppes, Rochenoire en groupe"],
+ [55,"epl","Maleterres de l'Est : Tirion, Darrowshire"],
+ [56,"epl","Maleterres de l'Est : Chapelle, Undercroft"],
+ [57,"wpl2","Maleterres de l'Ouest : Andorhal, Chromie"],
+ [58,"epl","Maleterres de l'Est : le nord, Stratholme","berceau"],
+ [59,"foudroyees","Retour aux Terres foudroyées","berceau"],
+ [60,"hyjal","Mont Hyjal"]
+];
