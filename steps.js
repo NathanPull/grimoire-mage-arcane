@@ -5,7 +5,7 @@
  * Les noms de quêtes sont en anglais, comme dans les sources. */
 window.STEPS = [
 {
-  id:"austrivage", lv:[30,32], title:"Austrivage et la côte", zone:"Contreforts de Hautebrande",
+  id:"austrivage", lv:[30,34], title:"Austrivage et la côte", zone:"Contreforts de Hautebrande",
   tags:[["pvp","Zone contestée"]], src:{kind:"zone",name:"games.gg, guide Hillsbrad Foothills",url:"https://games.gg/world-of-warcraft/guides/wow-forever-hillsbrad-foothills-leveling-guide/"},
   intro:"Petit hub, mais des chaînes rentables sur la côte et des quêtes qui t'envoient dans les montagnes d'Alterac. Les cibles autour d'Austrivage sont niveau 30 et plus, donc c'est pile pour toi.",
   acces:["Nouveau bateau Port de Menethil → Austrivage (il continue vers Auberdine).","Ou à pied depuis Arathi : Refuge de l'Ornière, ouest par le mur de Thoradin, puis la route vers le sud.","Point de vol : Darla Harris, au centre d'Austrivage. Lie ta pierre de foyer à l'auberge."],
@@ -24,7 +24,7 @@ window.STEPS = [
   ],
   elites:[["Battle of Hillsbrad (Dun Garok)","À faire à 3 : élites niveau 28-32, mais la récompense finale vaut le coup."],["Crushridge Warmongers","En groupe vers 38, sinon à zapper : élites 39-40."],["The Crown of Will","En groupe vers 36."]],
   skip:["<b>Reassignment</b>, sauf si tu passes déjà par Stormwind : un aller-retour pour un seul rendu."],
-  ensuite:"Le donjon de Dalaran si tu trouves un groupe, sinon Arathi."
+  ensuite:"Le donjon de Dalaran si tu trouves un groupe, puis les montagnes d'Alterac vers 34."
 },
 {
   id:"dalaran", lv:[30,33], title:"Cité de Dalaran (donjon)", zone:"Montagnes d'Alterac",
@@ -34,12 +34,12 @@ window.STEPS = [
   quetes:["Prends la quête de l'émissaire Jacques avant de partir.","Cherche un groupe dans le canal de recherche, ou avec des gens croisés à Austrivage.","Une à deux runs entre 29 et 31 suffisent."],
   elites:[],
   skip:["Ne farme pas le donjon en boucle : depuis Forever, les monstres de donjon donnent peu d'XP, ce sont les quêtes qui paient."],
-  ensuite:"Hautes-terres d'Arathi."
+  ensuite:"Montagnes d'Alterac, puis les Rives Claires."
 },
 {
-  id:"arathi1", lv:[31,35], title:"Arathi, première passe", zone:"Hautes-terres d'Arathi",
+  id:"arathi1", lv:[36,38], title:"Arathi, première passe", zone:"Hautes-terres d'Arathi",
   tags:[["pvp","Contestée"]], src:{kind:"zone",name:"games.gg, guide Arathi Highlands",url:"https://games.gg/world-of-warcraft/guides/wow-forever-arathi-highlands/"},
-  intro:"Arathi se fait mieux en deux passages : un premier vers 31-35 pour les chaînes solo, un second vers 37-40 pour la crique de Faldir et Boulderfist Hall.",
+  intro:"D'après la base de quêtes, presque toutes les quêtes d'Arathi sont niveau 36 à 40 (Myzrael 37, Go'Shek 36). Viens à 36, fais les chaînes solo, puis la crique de Faldir et Boulderfist Hall vers 38-40.",
   acces:["Depuis les Paluns : au nord par le viaduc de Thandol.","Depuis Austrivage : la grande route vers l'est.","Hub : Refuge de l'Ornière (46, 47). Prends le point de vol tout de suite."],
   avant:["<b>Malin's Request</b> (Archmage Malin, Stormwind) : ouvre la chaîne de Trelane au Refuge.","<b>Hints of a New Plague?</b> (Phin Odelic, Austrivage) : chaîne de la ferme Go'Shek.","<b>Sunken Treasure</b> (Baie-du-Butin) : ouvre la crique de Faldir, si tu passes par là."],
   quetes:[
@@ -54,10 +54,10 @@ window.STEPS = [
   ],
   elites:[["Stromgarde (toutes les quêtes du donjon à ciel ouvert)","Uniquement en groupe de 5, tout d'un coup. Seul, zappe tout."]],
   skip:["Toutes les quêtes de Stromgarde si aucun groupe ne se forme en 10 minutes."],
-  ensuite:"Montagnes d'Alterac vers 33-34, ou directement les Rives Claires à 35."
+  ensuite:"Arathi, deuxième passe : crique de Faldir et Boulderfist Hall."
 },
 {
-  id:"alterac", lv:[33,37], title:"Montagnes d'Alterac", zone:"Montagnes d'Alterac",
+  id:"alterac", lv:[34,37], title:"Montagnes d'Alterac", zone:"Montagnes d'Alterac",
   tags:[["opt","Optionnel"]], src:{kind:"zone",name:"games.gg, guide Alterac Mountains",url:"https://games.gg/world-of-warcraft/guides/wow-forever-alterac-mountains/"},
   intro:"Pas de point de vol ni de village : tout part d'Austrivage. Bonne zone de complément entre Arathi et les Rives Claires.",
   acces:["Vole à Austrivage, prends la route nord, à droite à la première fourche, puis au nord après la tour."],
@@ -90,10 +90,10 @@ window.STEPS = [
   danger:["Approche depuis les Carmines : quelques monstres milieu 30, reste sur la route.","Rivières et Eastwind Shore : murlocs et crocolisques, évite de te battre dans l'eau contre plusieurs.","Sunnyglade et Twilight's Shroud : lanceurs de sorts du Marteau du crépuscule, pas de gros pulls.","Autour de Krol'dok et du Bloodmasters Ring : ogres élites."],
   elites:[],
   skip:[],
-  ensuite:"Arathi deuxième passe vers 37, puis retour ici."
+  ensuite:"Arathi vers 36 (ses quêtes sont niveau 36-40), puis retour ici après le niveau 40."
 },
 {
-  id:"arathi2", lv:[37,40], title:"Arathi, deuxième passe", zone:"Hautes-terres d'Arathi",
+  id:"arathi2", lv:[38,40], title:"Arathi, deuxième passe", zone:"Hautes-terres d'Arathi",
   tags:[["pvp","Contestée"]], src:{kind:"zone",name:"games.gg, guide Arathi Highlands",url:"https://games.gg/world-of-warcraft/guides/wow-forever-arathi-highlands/"},
   intro:"La crique de Faldir est la meilleure XP par minute de la zone, et l'endroit le plus facile pour se noyer. Prends deux Elixirs of Water Breathing.",
   acces:["Vole au Refuge de l'Ornière.","Crique de Faldir : grotte au sud de Stromgarde (21, 75), puis nage vers l'est jusqu'aux quais."],
@@ -306,16 +306,16 @@ window.STEPS = [
 
 /* Plan niveau par niveau : [niveau, id d'étape principale, texte court, id alternatif éventuel] */
 window.LEVELS = [
- [30,"austrivage","Côte d'Austrivage et quête de Dalaran"],
- [31,"dalaran","Cité de Dalaran si groupe, sinon fin d'Austrivage","austrivage"],
- [32,"arathi1","Arathi : Refuge de l'Ornière, Myzrael, Go'Shek"],
- [33,"arathi1","Arathi : Witherbark, manoir de Northfold"],
+ [30,"austrivage","Côte d'Austrivage, et la quête de Dalaran"],
+ [31,"austrivage","Austrivage : murlocs, nagas, bisque de tortue","dalaran"],
+ [32,"austrivage","Austrivage : Farren's Proof, Syndicat","dalaran"],
+ [33,"austrivage","Austrivage : yétis de Darrow Hill, Costly Menace","dalaran"],
  [34,"alterac","Alterac depuis Austrivage"],
- [35,"rives1","Entrée aux Rives Claires par les Carmines","alterac"],
- [36,"rives1","Rives Claires autour de Fort-Lointain"],
- [37,"arathi2","Arathi : Boulderfist Hall et crique de Faldir","citesubmergee"],
- [38,"arathi2","Arathi : crique de Faldir"],
- [39,"rives1","Rives Claires, rivières et routes commerciales"],
+ [35,"rives1","Entrée aux Rives Claires par les Carmines"],
+ [36,"arathi1","Arathi : Refuge de l'Ornière, Northfold, Go'Shek","rives1"],
+ [37,"arathi1","Arathi : Myzrael, Witherbark","citesubmergee"],
+ [38,"arathi2","Arathi : Boulderfist Hall, crique de Faldir"],
+ [39,"arathi2","Arathi : crique de Faldir","rives1"],
  [40,"capitale40","En ville : monture, double spé, portails"],
  [41,"rives2","Rives Claires, campagne de la Confrérie"],
  [42,"rives2","Bastion Krol'dok en groupe"],
@@ -375,22 +375,22 @@ window.STEPS.push({
   skip:[], ensuite:"Steppes ardentes."
 });
 window.MAPS.foudroyees={id:4,pins:[[65.5,24.4,"Rempart-du-Néant, point de vol","hub"]]};
-window.STEP_ORDER=["austrivage","dalaran","arathi1","alterac","rives1","citesubmergee","capitale40","rives2","arathi2","hinterlands","gorge","foudroyees","steppes","wpl1","epl","wpl2","feralas","tanaris","shendralas","ungoro","gangrebois","berceau","hyjal"];
+window.STEP_ORDER=["austrivage","dalaran","alterac","rives1","citesubmergee","arathi1","arathi2","capitale40","rives2","hinterlands","gorge","foudroyees","steppes","wpl1","epl","wpl2","feralas","tanaris","shendralas","ungoro","gangrebois","berceau","hyjal"];
 /* Options Kalimdor : à faire seulement si tu veux changer de décor, chacune coûte un trajet en bateau. */
 window.KALIMDOR=["feralas","tanaris","shendralas","ungoro","gangrebois","berceau"];
 /* Liste exacte des quêtes (base Questie) : [clé de zone, niveau min, niveau max] */
-window.QZ={austrivage:["austrivage",26,40],alterac:["alterac",30,42],arathi1:["arathi",28,36],arathi2:["arathi",36,44],hinterlands:["hinterlands",40,53],gorge:["gorge",42,52],foudroyees:["blasted",44,60],steppes:["steppes",48,60],wpl1:["wpl",48,54],wpl2:["wpl",54,62],epl:["epl",52,62],feralas:["feralas",40,52],tanaris:["tanaris",40,50],ungoro:["ungoro",46,58],gangrebois:["gangrebois",46,58],berceau:["berceau",52,62]};
+window.QZ={austrivage:["austrivage",26,40],alterac:["alterac",30,42],arathi1:["arathi",30,37],arathi2:["arathi",38,44],hinterlands:["hinterlands",40,53],gorge:["gorge",42,52],foudroyees:["blasted",44,60],steppes:["steppes",48,60],wpl1:["wpl",48,54],wpl2:["wpl",54,62],epl:["epl",52,62],feralas:["feralas",40,52],tanaris:["tanaris",40,50],ungoro:["ungoro",46,58],gangrebois:["gangrebois",46,58],berceau:["berceau",52,62]};
 window.LEVELS = [
  [30,"austrivage","Côte d'Austrivage, et la quête de Dalaran"],
- [31,"arathi1","Arathi : Refuge de l'Ornière, Northfold","dalaran"],
- [32,"arathi1","Arathi : Myzrael, kobolds Drywhisker","dalaran"],
- [33,"arathi1","Arathi : Witherbark, ferme Go'Shek"],
+ [31,"austrivage","Austrivage : murlocs, nagas, bisque de tortue","dalaran"],
+ [32,"austrivage","Austrivage : Farren's Proof, Syndicat","dalaran"],
+ [33,"austrivage","Austrivage : yétis de Darrow Hill, Costly Menace","dalaran"],
  [34,"alterac","Alterac depuis Austrivage"],
  [35,"rives1","Entrée aux Rives Claires par les Carmines"],
- [36,"rives1","Rives Claires autour de Fort-Lointain"],
- [37,"rives1","Rives Claires : fermes et routes","citesubmergee"],
- [38,"rives1","Rives Claires : rivières","arathi2"],
- [39,"rives1","Rives Claires","arathi2"],
+ [36,"arathi1","Arathi : Refuge de l'Ornière, Northfold, Go'Shek","rives1"],
+ [37,"arathi1","Arathi : Myzrael, Witherbark","citesubmergee"],
+ [38,"arathi2","Arathi : Boulderfist Hall, crique de Faldir"],
+ [39,"arathi2","Arathi : crique de Faldir","rives1"],
  [40,"capitale40","En ville : monture, double spé, portails"],
  [41,"rives2","Rives Claires : campagne de la Confrérie"],
  [42,"rives2","Bastion Krol'dok en groupe"],
