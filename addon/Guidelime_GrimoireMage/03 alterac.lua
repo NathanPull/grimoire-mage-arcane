@@ -9,11 +9,5 @@ Prends [QA511] (Documents du Syndicat)
 [QC511]
 Rends [QT510]
 Rends [QT511]
-Prends [QA514] (Maître des traditions Dibbs)
-Prends [QA512] (Magistrat Henry Maleb)
-[QC514]
-[QC512]
-Rends [QT514]
-Rends [QT512]
 À faire seulement en groupe : Crushridge Warmongers, The Perenolde Tiara[O]
 ]], "Grimoire Mage : route 30-60")

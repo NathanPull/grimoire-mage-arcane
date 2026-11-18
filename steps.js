@@ -5,7 +5,7 @@
  * Les noms de quêtes sont en anglais, comme dans les sources. */
 window.STEPS = [
 {
-  id:"austrivage", lv:[30,34], title:"Austrivage et la côte", zone:"Contreforts de Hautebrande",
+  id:"austrivage", lv:[30,32], title:"Austrivage et la côte", zone:"Contreforts de Hautebrande",
   tags:[["pvp","Zone contestée"]], src:{kind:"zone",name:"games.gg, guide Hillsbrad Foothills",url:"https://games.gg/world-of-warcraft/guides/wow-forever-hillsbrad-foothills-leveling-guide/"},
   intro:"Petit hub, mais des chaînes rentables sur la côte et des quêtes qui t'envoient dans les montagnes d'Alterac. Les cibles autour d'Austrivage sont niveau 30 et plus, donc c'est pile pour toi.",
   acces:["Nouveau bateau Port de Menethil → Austrivage (il continue vers Auberdine).","Ou à pied depuis Arathi : Refuge de l'Ornière, ouest par le mur de Thoradin, puis la route vers le sud.","Point de vol : Darla Harris, au centre d'Austrivage. Lie ta pierre de foyer à l'auberge."],
@@ -24,7 +24,7 @@ window.STEPS = [
   ],
   elites:[["Battle of Hillsbrad (Dun Garok)","À faire à 3 : élites niveau 28-32, mais la récompense finale vaut le coup."],["Crushridge Warmongers","En groupe vers 38, sinon à zapper : élites 39-40."],["The Crown of Will","En groupe vers 36."]],
   skip:["<b>Reassignment</b>, sauf si tu passes déjà par Stormwind : un aller-retour pour un seul rendu."],
-  ensuite:"Le donjon de Dalaran si tu trouves un groupe, puis les montagnes d'Alterac vers 34."
+  ensuite:"Le nord de Strangleronce à 32 (camp rebelle et Nesingwary), ou Désolace si tu préfères éviter la Horde."
 },
 {
   id:"dalaran", lv:[30,33], title:"Cité de Dalaran (donjon)", zone:"Montagnes d'Alterac",
@@ -413,3 +413,55 @@ window.LEVELS = [
  [59,"foudroyees","Retour aux Terres foudroyées","berceau"],
  [60,"hyjal","Mont Hyjal"]
 ];
+
+/* Correctif du 18 nov. : Austrivage seul ne suffit pas de 30 à 34, Arathi commence à 36 */
+window.STEPS.push({
+  id:"strangleronce1", lv:[32,35], title:"Strangleronce nord", zone:"Vallée de Strangleronce",
+  tags:[["pvp","Très contestée"]], src:{kind:"zone",name:"games.gg, guide Stranglethorn Vale",url:"https://games.gg/world-of-warcraft/guides/wow-forever-stranglethorn-vale-leveling-guide/"},
+  intro:"La zone Alliance prévue pour 30-35 : le camp rebelle et l'expédition de Nesingwary ont une dizaine de quêtes à ton niveau. Reste dans le nord, le sud (Grom'gol, Baie-du-Butin) est là où la Horde campe.",
+  acces:["Depuis le Bois de la Pénombre, prends la route du sud vers Strangleronce.","Camp rebelle (38, 3) tout au nord, puis le camp de Nesingwary (35, 10) un peu plus bas.","Point de vol le plus proche côté Alliance : Sombre-Comté, au Bois de la Pénombre. Baie-du-Butin (point de vol neutre) est loin au sud."],
+  quetes:[
+    "Au camp rebelle (38, 3), prends <b>Jungle Secrets</b>, <b>The Second Rebellion</b> et <b>Bad Medicine</b>.",
+    "Au camp de Nesingwary (35, 10), prends <b>Welcome to the Jungle</b>, puis <b>Tiger Mastery</b> et <b>Panther Mastery</b>. Ajoute <b>Raptor Mastery</b> au niveau 34.",
+    "Tue les Kurzen Jungle Fighters pour <b>The Second Rebellion</b> et ramasse les remèdes pour <b>Bad Medicine</b> dans le même passage.",
+    "Fais les tigres et les panthères de la première série, puis rends-les pour avoir la deuxième série.",
+    "Commence par les tigres et les raptors, qui se recoupent avec tout le reste au milieu de la zone.",
+    "Si tu passes par Baie-du-Butin (point de vol), prends <b>Supply and Demand</b>, <b>Investigate the Camp</b>, <b>Singing Blue Shards</b> et <b>Bloodscalp Ears</b>. <b>Investigate the Camp</b> se rend vite.",
+    "Pars vers 35 : la suite de Strangleronce revient vers 36-40, avec la cité Submergée."
+  ],
+  elites:[["Colonel Kurzen","Groupe uniquement."],["Excelsior","À 40 ou à deux."]],
+  skip:[], ensuite:"Rives Claires à 35, puis Arathi à 36."
+});
+window.STEPS.push({
+  id:"desolace", lv:[32,37], title:"Désolace", zone:"Désolace",
+  tags:[["opt","Option Kalimdor"]], src:{kind:"zone",name:"games.gg, guide Desolace",url:"https://games.gg/world-of-warcraft/guides/wow-forever-desolace-leveling-guide/"},
+  intro:"L'alternative calme à Strangleronce : 17 quêtes niveau 31-35 et beaucoup moins de Horde. Il faut prendre le bateau pour Kalimdor.",
+  acces:["Bateau Port de Menethil → Auberdine, puis vol vers les Serres-Rocheuses et route vers le sud.","Hub Alliance : le Poste de Nijel, au nord de la zone. Prends le point de vol."],
+  quetes:[
+    "Rends la quête d'introduction, puis prends <b>Reagents for Reclaimers Inc.</b>, <b>The Karnitol Shipwreck</b>, <b>Vahlarriel's Search</b> et <b>Centaur Bounty</b>.",
+    "Prends <b>Strange Alliance</b> pour les Gelkis.",
+    "Tue des satyres Hatefury à Sargeron pour les griffes et les cornes.",
+    "Fouille le chariot près de Thunder Axe Fortress, ramasse le pendentif Malem et rends <b>Vahlarriel's Search</b>.",
+    "Trouve Dalinda Malem (54.9, 26.1), tue Tyranis Malem (53.0, 29.1) pour <b>Search for Tyranis</b>, puis escorte-la pour <b>Return to Vahlarriel</b>.",
+    "Prends <b>Sceptre of Light</b> à Ethel Rethor, tue le Burning Blade Seer (55.2, 30.2) et pille le coffre de Karnitol (36.1, 30.5) dans le même trajet.",
+    "Bloc neutre : <b>Kodo Roundup</b> et <b>Bone Collector</b> au cimetière des kodos (50.5, 58.5), escorte <b>Get Me Out of Here!</b> (33.9, 53.5)."
+  ],
+  elites:[], skip:[], ensuite:"Retour dans les Royaumes de l'Est : Rives Claires ou Arathi à 36."
+});
+window.MAPS.strangleronce1={id:33,pins:[[38,3.3,"Camp rebelle","hub"],[35.6,10.6,"Camp de Nesingwary","hub"],[32.5,29.2,"Grom'gol (Horde)","danger"],[27,77,"Baie-du-Butin, point de vol neutre"]]};
+window.MAPS.desolace={id:405,pins:[[64.7,10.5,"Poste de Nijel, point de vol","hub"]]};
+window.STEP_ORDER.splice(window.STEP_ORDER.indexOf("dalaran")+1,0,"strangleronce1");
+window.STEP_ORDER.splice(window.STEP_ORDER.indexOf("feralas"),0,"desolace");
+window.KALIMDOR.unshift("desolace");
+window.QZ.strangleronce1=["stv",30,36]; window.QZ.desolace=["desolace",30,38];
+window.LEVELS.splice(0,10,
+ [30,"austrivage","Côte d'Austrivage, et la quête de Dalaran"],
+ [31,"austrivage","Austrivage : murlocs, nagas, Syndicat","dalaran"],
+ [32,"strangleronce1","Strangleronce nord : camp rebelle, Nesingwary","desolace"],
+ [33,"strangleronce1","Strangleronce : tigres, panthères, Kurzen","desolace"],
+ [34,"strangleronce1","Strangleronce : raptors, Baie-du-Butin","desolace"],
+ [35,"rives1","Rives Claires depuis les Carmines","alterac"],
+ [36,"arathi1","Arathi : Refuge de l'Ornière, Northfold, Go'Shek","rives1"],
+ [37,"arathi1","Arathi : Myzrael, Witherbark","citesubmergee"],
+ [38,"arathi2","Arathi : Boulderfist Hall, crique de Faldir"],
+ [39,"arathi2","Arathi : crique de Faldir","rives1"]);

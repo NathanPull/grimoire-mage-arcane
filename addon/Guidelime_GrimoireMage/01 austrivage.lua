@@ -1,6 +1,6 @@
 Guidelime.registerGuide([[
-[N30-34 Austrivage et la côte]
-[NX34-37 Montagnes d'Alterac]
+[N30-32 Austrivage et la côte]
+[NX32-35 Strangleronce nord]
 [D Grimoire du Mage Arcane \\ Petit hub, mais des chaînes rentables sur la côte et des quêtes qui t'envoient dans les montagnes d'Alterac. Les cibles autour d'Austrivage sont niveau 30 et plus, donc c'est pile pour toi. \\ Y aller : Nouveau bateau Port de Menethil → Austrivage (il continue vers Auberdine). Ou à pied depuis Arathi : Refuge de l'Ornière, ouest par le mur de Thoradin, puis la route vers le sud. Point de vol : Darla Harris, au centre d'Austrivage. Lie ta pierre de foyer à l'auberge. \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
 [GA Alliance]
 Va à Austrivage, point de vol (Darla Harris) [G49.3,52.3 Hillsbrad Foothills]
