@@ -1,30 +1,26 @@
 ## Interface: 16001
 ## Title: Guidelime_GrimoireMage
 ## Author: Nathan Pull
-## Version: 0.1.0
+## Version: 0.2.0
 ## Notes: Route 30-60 Alliance du Grimoire du Mage Arcane (WoW Forever), pour Guidelime.
 ## Dependencies: Guidelime
 
 01 austrivage.lua
-02 dalaran.lua
-03 alterac.lua
-04 rives1.lua
-05 citesubmergee.lua
-06 arathi1.lua
-07 arathi2.lua
-08 capitale40.lua
-09 rives2.lua
-10 hinterlands.lua
-11 gorge.lua
-12 foudroyees.lua
-13 steppes.lua
-14 wpl1.lua
-15 epl.lua
-16 wpl2.lua
-17 feralas.lua
-18 tanaris.lua
-19 shendralas.lua
-20 ungoro.lua
-21 gangrebois.lua
-22 berceau.lua
-23 hyjal.lua
+02 alterac.lua
+03 rives1.lua
+04 arathi1.lua
+05 arathi2.lua
+06 rives2.lua
+07 hinterlands.lua
+08 gorge.lua
+09 foudroyees.lua
+10 steppes.lua
+11 wpl1.lua
+12 epl.lua
+13 wpl2.lua
+14 hyjal.lua
+K01 feralas.lua
+K02 tanaris.lua
+K03 ungoro.lua
+K04 gangrebois.lua
+K05 berceau.lua

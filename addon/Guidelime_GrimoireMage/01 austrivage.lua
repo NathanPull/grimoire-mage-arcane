@@ -1,50 +1,42 @@
 Guidelime.registerGuide([[
 [N30-34 Austrivage et la côte]
-[D Grimoire du Mage Arcane \\ Petit hub, mais des chaînes rentables sur la côte et des quêtes qui t'envoient dans les montagnes d'Alterac. Les cibles autour d'Austrivage sont niveau 30 et plus, donc c'est pile pour toi. \\ Site : nathanpull.github.io/grimoire-mage-arcane]
+[NX34-37 Montagnes d'Alterac]
+[D Grimoire du Mage Arcane \\ Petit hub, mais des chaînes rentables sur la côte et des quêtes qui t'envoient dans les montagnes d'Alterac. Les cibles autour d'Austrivage sont niveau 30 et plus, donc c'est pile pour toi. \\ Y aller : Nouveau bateau Port de Menethil → Austrivage (il continue vers Auberdine). Ou à pied depuis Arathi : Refuge de l'Ornière, ouest par le mur de Thoradin, puis la route vers le sud. Point de vol : Darla Harris, au centre d'Austrivage. Lie ta pierre de foyer à l'auberge. \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
 [GA Alliance]
-Nouveau bateau Port de Menethil → Austrivage (il continue vers Auberdine).[OC]
-Ou à pied depuis Arathi : Refuge de l'Ornière, ouest par le mur de Thoradin, puis la route vers le sud.[OC]
-Point de vol : Darla Harris, au centre d'Austrivage. Lie ta pierre de foyer à l'auberge.[OC]
-Va à Austrivage, point de vol (Darla Harris) [G49.3,52.3 Hillsbrad Foothills][OC]
-Prends [QA565] auprès de Bartolo Ginsetti
-Prends [QA564] auprès de Darren Malvew
-Prends [QA514] auprès de Maître des traditions Dibbs
-Prends [QA500] auprès de Maréchal Redpath
-Prends [QA536] auprès de Lieutenant Farren Orinelle
-Prends [QA659] auprès de Phin Odelic
-Prends [QA505] auprès de Magistrat Henry Maleb
-Prends [QA512] auprès de Magistrat Henry Maleb
-Prends [QA555] auprès de Chef Jessen
-Fais [QC536]
-Fais [QC555]
-Fais [QC505]
-Fais [QC659]
-Fais [QC565]
-Fais [QC564]
-Fais [QC514]
-Fais [QC512]
-Fais [QC500]
+Va à Austrivage, point de vol (Darla Harris) [G49.3,52.3 Hillsbrad Foothills]
+Si tu trouves un groupe, fais la Cité de Dalaran (donjon 28-33) : quête auprès de l'émissaire Jacques à Austrivage, entrée par les égouts de Dalaran en Alterac.[O]
+Prends [QA565] (Bartolo Ginsetti)
+Prends [QA564] (Darren Malvew)
+Prends [QA500] (Maréchal Redpath)
+Prends [QA536] (Lieutenant Farren Orinelle)
+Prends [QA659] (Phin Odelic)
+Prends [QA505] (Magistrat Henry Maleb)
+Prends [QA555] (Chef Jessen)
+[QC536]
+[QC555]
+[QC659]
+[QC505]
+[QC565]
+[QC564]
+[QC500]
 Rends [QT565]
 Rends [QT564]
-Rends [QT514]
 Rends [QT500]
 Rends [QT536]
 Rends [QT659]
 Rends [QT505]
-Rends [QT512]
 Rends [QT555]
-Prends [QA559] auprès de Lieutenant Farren Orinelle
-Fais [QC559]
+Prends [QA559] (Lieutenant Farren Orinelle)
+[QC559]
 Rends [QT559]
-Prends [QA560] auprès de Lieutenant Farren Orinelle
-Fais [QC560]
+Prends [QA560] (Lieutenant Farren Orinelle)
+[QC560]
 Rends [QT560]
-Prends [QA561] auprès de Maréchal Redpath
-Fais [QC561]
+Prends [QA561] (Maréchal Redpath)
+[QC561]
 Rends [QT561]
-Prends [QA562] auprès de Lieutenant Farren Orinelle
-Fais [QC562]
+Prends [QA562] (Lieutenant Farren Orinelle)
+[QC562]
 Rends [QT562]
-Quêtes de groupe laissées de côté : Crushridge Warmongers, The Crown of Will, Reassignment[O]
-Ensuite : Le donjon de Dalaran si tu trouves un groupe, puis les montagnes d'Alterac vers 34.
-]], "Grimoire Mage : 30-60 Royaumes de l'Est")
+À faire seulement en groupe : Crushridge Warmongers, The Crown of Will, Reassignment[O]
+]], "Grimoire Mage : route 30-60")
