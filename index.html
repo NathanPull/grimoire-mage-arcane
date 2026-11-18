@@ -194,7 +194,11 @@ tr:hover td{background:rgba(255,255,255,.02)}
   radial-gradient(ellipse at 55% 60%,#1e3a24,#0f1a12 70%)}
 .schema b{position:absolute;font-family:Cinzel,serif;font-size:13px;color:rgba(243,213,140,.75)}
 .qlist li.hl{border-color:var(--arc);background:rgba(176,124,255,.12)}
-.qlist .qpin{display:inline-block;margin-left:6px;font-size:11px;font-family:Cinzel,serif;color:var(--gold2);border:1px solid var(--goldDim);border-radius:8px;padding:0 5px}
+.qlist li.flash{animation:qflash 2.6s ease}
+@keyframes qflash{0%,30%{box-shadow:0 0 0 3px var(--arc);background:rgba(176,124,255,.25)}100%{box-shadow:none}}
+.pin.flash{animation:pflash .65s ease 4}
+@keyframes pflash{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.7);box-shadow:0 0 0 6px rgba(176,124,255,.6)}}
+.qlist .qpin{cursor:pointer;display:inline-block;margin-left:6px;font-size:11px;font-family:Cinzel,serif;color:var(--gold2);border:1px solid var(--goldDim);border-radius:8px;padding:0 5px}
 footer{margin-top:24px;color:var(--muted);font-size:12.5px;text-align:center}
 footer a{color:var(--gold)}
 @media (max-width:820px){.trees{grid-template-columns:repeat(3,280px)}}
@@ -603,7 +607,7 @@ function renderEtape(id){
   h+='<div class="panel"><h2>Y aller</h2>'+ul(st.acces||[])+(st.avant&&st.avant.length?'<h3>À prendre avant d\'y aller</h3>'+ul(st.avant):'')+'</div>';
   if(st.quetes&&st.quetes.length){
     h+='<div class="panel"><h2>'+(st.src.kind==='hubs'?'Ce que tu peux faire':'Quêtes, dans l\'ordre')+'</h2><div class="muted small" style="margin-bottom:8px">Coche au fur et à mesure, c\'est gardé dans ton navigateur.</div><ol class="qlist">'+
-      st.quetes.map(function(q,k){var ok=!!qdone[st.id+':'+k];COORD.lastIndex=0; var hasC=COORD.test(q); return '<li class="'+(ok?'ok':'')+'" data-q="'+st.id+':'+k+'" data-k="'+k+'"><input type="checkbox"'+(ok?' checked':'')+' aria-label="Fait"><span>'+q+(hasC?'<span class="qpin">sur la carte</span>':'')+'</span></li>';}).join('')+'</ol></div>';
+      st.quetes.map(function(q,k){var ok=!!qdone[st.id+':'+k];COORD.lastIndex=0; var hasC=COORD.test(q); COORD.lastIndex=0; return '<li class="'+(ok?'ok':'')+'" data-q="'+st.id+':'+k+'" data-k="'+k+'"><input type="checkbox"'+(ok?' checked':'')+' aria-label="Fait"><span>'+q+(hasC?'<span class="qpin" title="Voir sur la carte">📍 voir sur la carte</span>':'')+'</span></li>';}).join('')+'</ol></div>';
   }
   if(st.danger&&st.danger.length)h+='<div class="panel"><h2>Zones dangereuses</h2>'+ul(st.danger)+'</div>';
   if(st.elites&&st.elites.length)h+='<div class="panel"><h2>Élites et quêtes de groupe</h2><table><tr><th>Quête</th><th>Verdict</th></tr>'+st.elites.map(function(e){return '<tr><td><b>'+e[0]+'</b></td><td>'+e[1]+'</td></tr>';}).join('')+'</table></div>';
@@ -613,6 +617,11 @@ function renderEtape(id){
   window.scrollTo(0,0);
 }
 var etEl=document.getElementById('etape');
+/* Défilement fiable : smooth si possible, sinon saut direct */
+function scrollToEl(el,where){var r=el.getBoundingClientRect(); var top=window.scrollY+r.top-(where==='center'?(window.innerHeight-r.height)/2:20);
+  top=Math.max(0,top); var y0=window.scrollY; try{window.scrollTo({top:top,behavior:'smooth'});}catch(err){window.scrollTo(0,top);}
+  setTimeout(function(){if(Math.abs(window.scrollY-y0)<2&&Math.abs(top-y0)>2)window.scrollTo(0,top);},400);}
+function flash(el){el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash','hl'); setTimeout(function(){el.classList.remove('flash','hl');},2600);}
 etEl.addEventListener('mouseover',function(e){
   var p=e.target.closest('.pin'); var tipEl=document.getElementById('maptip');
   if(p&&tipEl){tipEl.textContent=p.dataset.label; tipEl.style.left=p.style.left; tipEl.style.top=p.style.top; tipEl.style.display='block';}
@@ -623,7 +632,8 @@ etEl.addEventListener('mouseout',function(e){
   var li=e.target.closest('li[data-k]'); if(li){[].forEach.call(etEl.querySelectorAll('.pin.hl'),function(x){x.classList.remove('hl');});}
 });
 etEl.addEventListener('click',function(e){
-  var p=e.target.closest('.pin[data-qi]'); if(p){var li=etEl.querySelector('li[data-k="'+p.dataset.qi+'"]'); if(li){li.scrollIntoView({behavior:'smooth',block:'center'}); li.classList.add('hl'); setTimeout(function(){li.classList.remove('hl');},1500);} return;}
+  var p=e.target.closest('.pin[data-qi]'); if(p){var li=etEl.querySelector('li[data-k="'+p.dataset.qi+'"]'); if(li){scrollToEl(li,'center'); flash(li);} return;}
+  var bd=e.target.closest('.qpin'); if(bd){var lq=bd.closest('li[data-k]'); var pins=etEl.querySelectorAll('.pin[data-qi="'+lq.dataset.k+'"]'); var mp=document.getElementById('map'); if(mp)scrollToEl(mp,'center'); [].forEach.call(pins,function(x){flash(x);}); return;}
   var li=e.target.closest('li[data-q]'); if(li){var k=li.dataset.q; qdone[k]=!qdone[k]; save('gm_quests',qdone); li.classList.toggle('ok',qdone[k]); li.querySelector('input').checked=qdone[k];
     [].forEach.call(etEl.querySelectorAll('.pin[data-qi="'+li.dataset.k+'"]'),function(x){x.classList.toggle('done',qdone[k]);}); return;}
   var b=e.target.closest('[data-go]'); if(b)go('etape-'+b.dataset.go);
