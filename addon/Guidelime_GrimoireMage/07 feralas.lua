@@ -1,5 +1,6 @@
 Guidelime.registerGuide([[
-[N44-50 Feralas]
+[N47-50 Feralas]
+[NX50-53 Cratère d'Un'Goro]
 [D Grimoire du Mage Arcane \\ Arrivée Alliance vers 44, départ à 50. Hub au Bastion de Plumelune, sur l'île de Sardor. La zone est grande : regroupe tes objectifs. \\ Y aller : Point de vol du Bastion de Plumelune (Feathermoon Stronghold). \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
 [GA Alliance]
 Va à Bastion de Plumelune, point de vol [G30.2,43.2 Feralas]
@@ -82,4 +83,4 @@ Prends [QA4267] (Shandris Feathermoon)
 [QC4267]
 Rends [QT4267]
 À faire seulement en groupe : Freedom for All Creatures[O]
-]], "Grimoire Mage : options Kalimdor")
+]], "Grimoire Mage : route 30-60")

@@ -1,6 +1,7 @@
 Guidelime.registerGuide([[
-[N44-48 Tanaris + Zul'Farrak]
-[D Grimoire du Mage Arcane \\ Pas de guide de zone Forever publié pour Tanaris. Voici les quêtes de Gadgetzan du jeu d'origine, qui devraient toujours être là. Vérifie dans ton journal. \\ Y aller : Point de vol de Gadgetzan (neutre). Le bateau Steamwheedle Port → Powderfuse Port relie Tanaris aux Rives Claires. \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
+[N44-47 Tanaris + Zul'Farrak]
+[NX47-50 Feralas]
+[D Grimoire du Mage Arcane \\ Première traversée : depuis les Rives Claires, le bateau de Powderfuse Port t'amène directement à Tanaris. 29 quêtes Alliance entre 44 et 49 autour de Gadgetzan. Pas de guide de zone Forever : l'ordre ci-dessous vient du jeu Classic, la liste complète plus bas vient de la base Questie. \\ Y aller : Point de vol de Gadgetzan (neutre). Le bateau Steamwheedle Port → Powderfuse Port relie Tanaris aux Rives Claires. \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
 [GA Alliance]
 Va à Gadgetzan, point de vol [G51,29 Tanaris]
 Prends [QA3042] (Trenton Lighthammer)
@@ -87,4 +88,4 @@ Rends [QT113]
 Prends [QA162] (Grand Géomètre Fizzledowser)
 [QC162]
 Rends [QT162]
-]], "Grimoire Mage : options Kalimdor")
+]], "Grimoire Mage : route 30-60")

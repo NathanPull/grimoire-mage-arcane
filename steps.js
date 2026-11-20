@@ -421,7 +421,7 @@ window.STEPS.push({
   intro:"La zone Alliance prévue pour 30-35 : le camp rebelle et l'expédition de Nesingwary ont une dizaine de quêtes à ton niveau. Reste dans le nord, le sud (Grom'gol, Baie-du-Butin) est là où la Horde campe.",
   acces:["Depuis le Bois de la Pénombre, prends la route du sud vers Strangleronce.","Camp rebelle (38, 3) tout au nord, puis le camp de Nesingwary (35, 10) un peu plus bas.","Point de vol le plus proche côté Alliance : Sombre-Comté, au Bois de la Pénombre. Baie-du-Butin (point de vol neutre) est loin au sud."],
   quetes:[
-    "Au camp rebelle (38, 3), prends <b>Jungle Secrets</b>, <b>The Second Rebellion</b> et <b>Bad Medicine</b>.",
+    "Au camp rebelle (38, 3), prends <b>The Second Rebellion</b> et <b>Bad Medicine</b>. <b>Jungle Secrets</b> (soldat Thorsen) ne se donne qu'après l'avoir sauvé d'une embuscade au retour de sa patrouille : si Thorsen reste au camp sans « ! », passe-la.",
     "Au camp de Nesingwary (35, 10), prends <b>Welcome to the Jungle</b>, puis <b>Tiger Mastery</b> et <b>Panther Mastery</b>. Ajoute <b>Raptor Mastery</b> au niveau 34.",
     "Tue les Kurzen Jungle Fighters pour <b>The Second Rebellion</b> et ramasse les remèdes pour <b>Bad Medicine</b> dans le même passage.",
     "Fais les tigres et les panthères de la première série, puis rends-les pour avoir la deuxième série.",
@@ -465,3 +465,138 @@ window.LEVELS.splice(0,10,
  [37,"arathi1","Arathi : Myzrael, Witherbark","citesubmergee"],
  [38,"arathi2","Arathi : Boulderfist Hall, crique de Faldir"],
  [39,"arathi2","Arathi : crique de Faldir","rives1"]);
+
+/* =====================================================================
+ * Révision complète du 20 nov. : route recalculée à partir du nombre réel
+ * de quêtes Alliance par zone et par niveau (base QuestieDB Forever).
+ * Cible : au moins 8 quêtes disponibles par niveau sur le chemin principal.
+ * ===================================================================== */
+(function(){
+var S={}; window.STEPS.forEach(function(s){S[s.id]=s;});
+function set(id,o){Object.keys(o).forEach(function(k){S[id][k]=o[k];});}
+window.STEPS.push({
+  id:"strangleronce2", lv:[34,37], title:"Strangleronce, deuxième série", zone:"Vallée de Strangleronce",
+  tags:[["pvp","Très contestée"]], src:{kind:"zone",name:"games.gg, guide Stranglethorn Vale",url:"https://games.gg/world-of-warcraft/guides/wow-forever-stranglethorn-vale-leveling-guide/"},
+  intro:"La zone la plus riche de ta tranche : 26 quêtes Alliance entre 34 et 37. Tu finis les séries de Nesingwary, les chaînes du camp rebelle et celles de Baie-du-Butin. Baie-du-Butin est neutre et gardée, mais la route qui y mène passe près de Grom'gol : avance prudemment.",
+  acces:["Tu es déjà sur place. Prends le point de vol de Baie-du-Butin (neutre) tout au sud dès ton premier passage.","Pour descendre au sud, suis la route principale et contourne Grom'gol (camp Horde) par l'est."],
+  quetes:[
+    "Rends tes quêtes de la première série chez Nesingwary (35, 10) et prends la deuxième : <b>Tiger Mastery</b>, <b>Panther Mastery</b>, et <b>Raptor Mastery</b> dès le niveau 34.",
+    "Au camp rebelle (38, 3), enchaîne <b>Special Forces</b> et <b>Kurzen's Mystery</b>.",
+    "Descends à Baie-du-Butin et prends le point de vol. Prends <b>Supply and Demand</b>, <b>Investigate the Camp</b>, <b>Singing Blue Shards</b> et <b>Bloodscalp Ears</b>. Rends tout de suite <b>Investigate the Camp</b>.",
+    "Chaîne de Krazek à Baie-du-Butin : <b>Krazek's Cookery</b>, puis <b>Favor for Krazek</b> et <b>Return to Corporal Kaleb</b>.",
+    "<b>The Haunted Isle</b>, puis <b>The Stone of the Tides</b>, <b>Water Elementals</b> et <b>Magical Analysis</b>.",
+    "Quêtes neutres de Baie-du-Butin : <b>Some Assembly Required</b> et <b>Hostile Takeover</b>.",
+    "Tue des trolls Bloodscalp (oreilles) et des cristaux bleus (éclats) dans le même passage à l'ouest.",
+    "Vers 37, va tuer Sin'Dall pour <b>Tiger Mastery</b> (32.2, 17.4), puis rends la série chez Nesingwary."
+  ],
+  elites:[["Colonel Kurzen","Groupe uniquement."],["Excelsior","À 40 ou à deux."]],
+  skip:[], ensuite:"Les Rives Claires vers 36-37 : la grande nouvelle zone, à faire jusqu'à 44."
+});
+window.STEPS.push({
+  id:"strangleronce3", lv:[40,45], title:"Strangleronce, troisième série", zone:"Vallée de Strangleronce",
+  tags:[["opt","Option"],["pvp","Très contestée"]], src:{kind:"zone",name:"games.gg, guide Stranglethorn Vale",url:"https://games.gg/world-of-warcraft/guides/wow-forever-stranglethorn-vale-leveling-guide/"},
+  intro:"Si les Rives Claires te paraissent vides, Strangleronce a encore 33 quêtes entre 40 et 45 : les pirates de la Voile sanglante, les finales de Nesingwary et les quêtes de Baie-du-Butin.",
+  acces:["Point de vol de Baie-du-Butin."],
+  quetes:[
+    "Lance la chaîne <b>The Bloodsail Buccaneers</b> auprès du second Crazz, et prends en même temps <b>Up to Snuff</b>, <b>Keep An Eye Out</b> et <b>Akiris by the Bundle</b> pour tuer les mêmes pirates une seule fois.",
+    "<b>Scaring Shaky</b>, puis <b>Return to MacKinley</b>, <b>Voodoo Dues</b> et <b>Cracking Maury's Foot</b>.",
+    "Un seul passage pour <b>Venture Company Mining</b>, <b>Zanzil's Secret</b> et <b>Skullsplitter Tusks</b> (camps de la Venture Co., camp de Zanzil, ruines Skullsplitter).",
+    "Termine les séries <b>Raptor Mastery</b> et <b>Panther Mastery</b> de Nesingwary."
+  ],
+  elites:[["Big Game Hunter","À faire en groupe, l'arme à distance vaut le coup."],["Panther Mastery","Bhag'thera, à deux."],["The Bloodsail Buccaneers","La fin se fait à deux : trois capitaines sur des navires bondés."]],
+  skip:[], ensuite:"Tanaris vers 44."
+});
+window.STEPS.push({
+  id:"badlands", lv:[37,43], title:"Terres ingrates", zone:"Terres ingrates",
+  tags:[["opt","Option"]], src:{kind:"classic",name:"Base de quêtes Questie (pas de guide de zone Forever trouvé)",url:"https://github.com/Questie/QuestieDB"},
+  intro:"Zone désertique sans village Alliance : 21 quêtes entre 36 et 43, dont la chaîne d'Uldaman. Bonne alternative à Arathi si les Rives Claires te lassent.",
+  acces:["Depuis Loch Modan, par la route du sud-est.","Pas de point de vol Alliance dans la zone : le plus proche est Thelsamar (Loch Modan)."],
+  quetes:["Le prospecteur Ryedol (53, 43) lance la chaîne d'Uldaman avec <b>A Dwarf and His Tools</b> et <b>A Sign of Hope</b>.","La liste complète plus bas donne tous les donneurs et leur position."],
+  elites:[], skip:[], ensuite:"Retour aux Rives Claires, ou Arathi."
+});
+window.STEPS.push({
+  id:"dustwallow", lv:[35,40], title:"Marécage d'Âprefange", zone:"Marécage d'Âprefange",
+  tags:[["opt","Option Kalimdor"]], src:{kind:"zone",name:"games.gg, guide Dustwallow Marsh",url:"https://games.gg/world-of-warcraft/guides/wow-forever-dustwallow-marsh-guide/"},
+  intro:"L'alternative calme à Strangleronce pour 35-40 : 17 quêtes Alliance au départ de Theramore, beaucoup moins de Horde.",
+  acces:["Bateau Port de Menethil → Theramore.","Point de vol de Theramore. Lie ta pierre de foyer à l'auberge."],
+  quetes:[
+    "Prends <b>They Call Him Smiling Jim</b> (garde Byron) et <b>Mudrock Soup and Bugs</b> (Morgan Stern), rends Smiling Jim dans le donjon derrière l'auberge et achète trois Soothing Spices.",
+    "Tue des tortues Mudrock au nord des portes pour 8 langues.",
+    "Va au manoir de Swamplight (55, 26), donne les épices à Jarl, prends <b>Jarl Needs Eyes</b> et clique le tas de terre pour <b>The Orc Report</b>.",
+    "Nettoie les araignées Darkmist dans et autour de la grotte (32, 23) pour les yeux.",
+    "Prends <b>Hungry!</b> auprès de l'ogre Mudcrush Durtfeet (35, 38).",
+    "À l'auberge de Shady Rest, clique les trois objets pour <b>Suspicious Hoofprints</b>, <b>Lieutenant Paval Reethe</b> et <b>The Black Shield</b>.",
+    "Rentre à Theramore et suis la chaîne de Reethe : capitaine Vimes, <b>Daelin's Men</b>, <b>The Deserters</b>.",
+    "Tue des murlocs Mirefin au nord-est de Swamplight pour les 12 têtes de <b>Hungry!</b>.",
+    "Escorte Stinky (49, 21) pour <b>Stinky's Escape</b>, puis bats Balos Jacken à la tour de Lost Point."
+  ],
+  elites:[["The Brood of Onyxia","À deux ou trois, vers 45."],["Challenge Overlord Mok'Morokk","En groupe complet ou à 48."]],
+  skip:[], ensuite:"Retour dans les Royaumes de l'Est pour les Rives Claires."
+});
+window.MAPS.strangleronce2={id:33,pins:[[35.6,10.6,"Camp de Nesingwary","hub"],[27.5,77.8,"Baie-du-Butin, point de vol neutre","hub"],[38,3.3,"Camp rebelle"],[32.5,29.2,"Grom'gol (Horde)","danger"]]};
+window.MAPS.strangleronce3={id:33,pins:[[27.5,77.8,"Baie-du-Butin, point de vol neutre","hub"],[35.6,10.6,"Camp de Nesingwary"],[32.5,29.2,"Grom'gol (Horde)","danger"]]};
+window.MAPS.badlands={id:3,pins:[[53.4,43.4,"Prospecteur Ryedol"]]};
+window.MAPS.dustwallow={id:15,pins:[[67.4,51.3,"Theramore, point de vol","hub"],[55.4,26.3,"Manoir de Swamplight (Jarl)"]]};
+
+set("austrivage",{lv:[30,31],ensuite:"Le nord de Strangleronce."});
+set("strangleronce1",{lv:[32,34],ensuite:"Reste à Strangleronce pour la deuxième série."});
+set("rives1",{lv:[36,40],intro:"La grande nouvelle zone 35-45, près de 200 quêtes pour les deux factions. C'est le cœur de ta route de 36 à 44. Aucun guide n'a encore publié les noms des quêtes Alliance : suis les fils d'histoire depuis Fort-Lointain et nettoie une zone à la fois.",ensuite:"Au niveau 40, passe en ville, puis reviens finir la zone."});
+set("rives2",{lv:[40,44],ensuite:"Tanaris : prends le bateau de Powderfuse Port, sur la côte des Rives Claires."});
+set("arathi1",{tags:[["opt","Option"],["pvp","Contestée"]],ensuite:"Arathi, deuxième passe."});
+set("arathi2",{tags:[["opt","Option"],["pvp","Contestée"]],ensuite:"Retour aux Rives Claires."});
+set("alterac",{tags:[["opt","Option"]],intro:"Seulement 3 quêtes à ton niveau dans la zone elle-même : la plupart se prennent à Austrivage. À garder pour les chaînes déjà commencées là-bas."});
+set("tanaris",{lv:[44,47],intro:"Première traversée : depuis les Rives Claires, le bateau de Powderfuse Port t'amène directement à Tanaris. 29 quêtes Alliance entre 44 et 49 autour de Gadgetzan. Pas de guide de zone Forever : l'ordre ci-dessous vient du jeu Classic, la liste complète plus bas vient de la base Questie.",ensuite:"Feralas, en volant de Gadgetzan au Bastion de Plumelune.",tags:[["mile","Traversée 1"]]});
+set("feralas",{lv:[47,50],ensuite:"Un'Goro, par Tanaris."});
+set("ungoro",{lv:[50,53],ensuite:"Gangrebois."});
+set("gangrebois",{lv:[53,55],ensuite:"Berceau-de-l'Hiver, juste au nord."});
+set("berceau",{lv:[55,57],ensuite:"Deuxième traversée : bateau Auberdine → Port de Menethil, puis les Maleterres.",tags:[["opt","Quêtes Classic à vérifier"]]});
+set("wpl1",{lv:[57,58],intro:"Deuxième traversée faite : retour dans les Royaumes de l'Est. Premier passage rapide pour les chaudrons de Felstone et Dalson, ces quêtes sont faciles pour toi maintenant."});
+set("epl",{lv:[58,59]});
+set("wpl2",{lv:[59,60]});
+set("hinterlands",{tags:[["opt","Option"]]});
+set("gorge",{tags:[["opt","Option"]]});
+set("foudroyees",{tags:[["opt","Option"]]});
+set("steppes",{tags:[["opt","Option"]]});
+
+window.STEP_ORDER=["austrivage","strangleronce1","strangleronce2","rives1","capitale40","rives2","tanaris","feralas","ungoro","gangrebois","berceau","wpl1","epl","wpl2","hyjal",
+  "dalaran","alterac","dustwallow","desolace","citesubmergee","arathi1","arathi2","badlands","strangleronce3","shendralas","hinterlands","gorge","foudroyees","steppes"];
+window.MAIN=["austrivage","strangleronce1","strangleronce2","rives1","capitale40","rives2","tanaris","feralas","ungoro","gangrebois","berceau","wpl1","epl","wpl2","hyjal"];
+window.KALIMDOR=["tanaris","feralas","ungoro","gangrebois","berceau","dustwallow","desolace","shendralas"];
+window.QZ={austrivage:["hillsbrad",28,36],alterac:["alterac",30,42],strangleronce1:["stv",30,34],strangleronce2:["stv",35,38],strangleronce3:["stv",39,46],
+  arathi1:["arathi",30,38],arathi2:["arathi",39,44],badlands:["badlands",34,45],dustwallow:["dustwallow",33,42],desolace:["desolace",30,40],
+  tanaris:["tanaris",42,51],feralas:["feralas",42,51],ungoro:["ungoro",48,57],gangrebois:["gangrebois",50,58],berceau:["berceau",52,59],
+  wpl1:["wpl",50,55],wpl2:["wpl",56,59],epl:["epl",53,59],hinterlands:["hinterlands",40,53],gorge:["gorge",43,52],foudroyees:["blasted",44,59],steppes:["steppes",48,59]};
+window.LEVELS=[
+ [30,"austrivage","Côte d'Austrivage"],
+ [31,"austrivage","Austrivage : murlocs, nagas, Syndicat","dalaran"],
+ [32,"strangleronce1","Strangleronce nord : camp rebelle, Nesingwary","desolace"],
+ [33,"strangleronce1","Strangleronce : tigres, panthères, Kurzen","desolace"],
+ [34,"strangleronce2","Strangleronce : deuxième série, raptors","dustwallow"],
+ [35,"strangleronce2","Baie-du-Butin : Krazek, Haunted Isle","dustwallow"],
+ [36,"strangleronce2","Strangleronce : fin de la deuxième série","rives1"],
+ [37,"rives1","Rives Claires depuis les Carmines","arathi1"],
+ [38,"rives1","Rives Claires autour de Fort-Lointain","badlands"],
+ [39,"rives1","Rives Claires","arathi2"],
+ [40,"capitale40","En ville : monture, double spé, portails"],
+ [41,"rives2","Rives Claires : campagne de la Confrérie","strangleronce3"],
+ [42,"rives2","Bastion Krol'dok en groupe","strangleronce3"],
+ [43,"rives2","Fin des Rives Claires","strangleronce3"],
+ [44,"tanaris","Bateau pour Tanaris : Gadgetzan","hinterlands"],
+ [45,"tanaris","Tanaris : eau, pirates, Thistleshrub"],
+ [46,"tanaris","Tanaris, Zul'Farrak en groupe","hinterlands"],
+ [47,"feralas","Feralas : Plumelune, Hatecrest"],
+ [48,"feralas","Feralas : ruche Zukk'ash, Woodpaw","gorge"],
+ [49,"feralas","Feralas : Grimtotem, Ravenwind","gorge"],
+ [50,"ungoro","Un'Goro : Refuge des Marshal","foudroyees"],
+ [51,"ungoro","Un'Goro : cristaux, A-Me 01"],
+ [52,"ungoro","Un'Goro : fin de zone","steppes"],
+ [53,"gangrebois","Gangrebois : Talonbranch Glade","steppes"],
+ [54,"gangrebois","Gangrebois, Timbermaw"],
+ [55,"berceau","Berceau-de-l'Hiver : Long-guet"],
+ [56,"berceau","Berceau-de-l'Hiver : yétis, Winterfall"],
+ [57,"wpl1","Bateau retour, Maleterres de l'Ouest"],
+ [58,"epl","Maleterres de l'Est : Tirion, Darrowshire"],
+ [59,"wpl2","Maleterres : Andorhal, chaudrons, fin de zone","epl"],
+ [60,"hyjal","Mont Hyjal"]
+];
+})();

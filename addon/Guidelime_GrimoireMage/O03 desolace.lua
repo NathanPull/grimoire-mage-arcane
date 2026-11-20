@@ -7,11 +7,15 @@ Prends [QA1387] (Caporal Melkins)
 Prends [QA1382] (Capitaine Pentigast)
 Prends [QA1385] (Capitaine Pentigast)
 Prends [QA1437] (Vahlarriel Demonslayer)
+Prends [QA261] (Frère Anton)
+Prends [QA5501] (Bibbly F'utzbuckle)
 Prends [QA5741] (Azore Aldamort)
 Prends [QA6161] (Journal de Rackmore)
 Prends [QA5821] (Cork Gizelton)
 Prends [QA5943] (Rigger Gizelton)
 Prends [QA5561] (Smeed Scrabblescrew)
+Prends [QA6132] (Melizza Brimbuzzle)
+Prends [QA6134] (Hornizz Brimbuzzle)
 [QC1387]
 [QC1437]
 [QC5741]
@@ -21,15 +25,24 @@ Prends [QA5561] (Smeed Scrabblescrew)
 [QC5821]
 [QC6161]
 [QC5943]
+[QC261]
+[QC5501]
+[QC6132]
+[QC6134]
 Rends [QT1387]
 Rends [QT1382]
 Rends [QT1385]
 Rends [QT1437]
+Rends [QT261]
+Rends [QT5501]
 Rends [QT5741]
 Rends [QT6161]
 Rends [QT5821]
 Rends [QT5943]
 Rends [QT5561]
+Rends [QT6132]
+Rends [QT6134]
+Prends [QA1052] (Frère Anton)
 Prends [QA1465] (Coffre de Malem)
 Prends [QA6027] (Azore Aldamort)
 Prends [QA1386] (Warug)
@@ -38,6 +51,8 @@ Prends [QA1384] (Uthek la Sage)
 [QC1384]
 [QC1465]
 [QC6027]
+[QC1052]
+Rends [QT1052]
 Rends [QT1465]
 Rends [QT6027]
 Rends [QT1386]
@@ -51,4 +66,4 @@ Rends [QT1439]
 Prends [QA1440] (Dalinda Malem)
 [QC1440]
 Rends [QT1440]
-]], "Grimoire Mage : options Kalimdor")
+]], "Grimoire Mage : options")

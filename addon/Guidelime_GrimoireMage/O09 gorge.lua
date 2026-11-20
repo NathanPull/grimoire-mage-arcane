@@ -1,6 +1,5 @@
 Guidelime.registerGuide([[
 [N46-50 Gorge des Vents brûlants]
-[NX47-50 Terres foudroyées]
 [D Grimoire du Mage Arcane \\ Arrivée à 46, boucle principale 47-49, départ 49-50. Hub neutre à Thorium Point. \\ Y aller : Point de vol de Thorium Point (neutre). \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
 [GA Alliance]
 Va à Thorium Point, point de vol [G37.9,30.8 Searing Gorge]
@@ -71,4 +70,4 @@ Prends [QA3481] (Trésor du Vol noir)
 [QC3481]
 Rends [QT3481]
 À faire seulement en groupe : Tours, Overseer Maltorius, Obsidion[O]
-]], "Grimoire Mage : route 30-60")
+]], "Grimoire Mage : options")

@@ -669,11 +669,11 @@ function renderRoute(){
     g+='<button class="lvrow'+(L[0]===level?' cur':'')+(L[0]<level?' past':'')+'" data-go="'+L[1]+'"><span class="n">'+L[0]+'</span><span><span class="z">'+st.zone+(stepDone(st)?' <span class="okm">✓</span>':'')+'</span>'+L[2]+(alt?'<br><span class="alt">ou : '+alt.title+(KAL.indexOf(alt.id)>=0?' (Kalimdor)':'')+'</span>':'')+'</span></button>';});
   document.getElementById('lvgrid').innerHTML=g;
   document.getElementById('pasttoggle').textContent=showPast?'Masquer les niveaux passés':'Afficher les niveaux passés';
-  var main='',kal='',tot=0,dn=0;
+  var main='',kal='',optek='',tot=0,dn=0;
   STEPS.forEach(function(st){var c=stepCount(st); tot+=c[1]; dn+=c[0]; var full=c[1]&&c[0]===c[1];
     var card='<div class="step"><span class="dot'+(full?' ok':'')+'"></span><div class="card click'+(full?' done':'')+'" data-go="'+st.id+'"><div class="top"><span class="lvtag">'+lvTxt(st)+'</span><b class="z">'+st.title+'</b>'+relTag(st)+tagsHTML(st.tags)+'<span class="cnt">'+(c[1]?c[0]+'/'+c[1]:'')+'</span></div><div class="muted" style="margin-top:4px">'+st.intro+'</div></div></div>';
-    if(KAL.indexOf(st.id)>=0)kal+=card; else main+=card;});
-  document.getElementById('routelist').innerHTML='<h3 class="grp">Chemin principal : Royaumes de l\'Est, sans traversée</h3>'+main+'<h3 class="grp">Options Kalimdor (chacune coûte un trajet en bateau)</h3>'+kal;
+    var MAINL=window.MAIN||[]; if(MAINL.indexOf(st.id)>=0)main+=card; else if(KAL.indexOf(st.id)>=0)kal+=card; else optek+=card;});
+  document.getElementById('routelist').innerHTML='<h3 class="grp">Chemin principal (deux traversées : vers Tanaris à 44, retour à 57)</h3>'+main+'<h3 class="grp">Options dans les Royaumes de l\'Est</h3>'+optek+'<h3 class="grp">Options Kalimdor</h3>'+kal;
   document.getElementById('progbar').style.width=(tot?dn/tot*100:0)+'%';
 }
 document.getElementById('pasttoggle').addEventListener('click',function(){showPast=!showPast;renderRoute();});

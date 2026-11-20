@@ -1,5 +1,6 @@
 Guidelime.registerGuide([[
 [N50-53 Cratère d'Un'Goro]
+[NX53-55 Gangrebois]
 [D Grimoire du Mage Arcane \\ Objectifs denses et faciles à enchaîner. Pas de guide de zone Forever publié : ce sont les quêtes du jeu d'origine. \\ Y aller : Depuis Tanaris par la rampe ouest, ou point de vol du Refuge des Marshal (neutre). \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
 [GA Alliance]
 Va à Refuge des Marshal, point de vol [G43.5,8.5 Ungoro Crater]
@@ -84,4 +85,4 @@ Rends [QT3908]
 Rends [QT4321]
 Rends [QT4245]
 Rends [QT4292]
-]], "Grimoire Mage : options Kalimdor")
+]], "Grimoire Mage : route 30-60")
