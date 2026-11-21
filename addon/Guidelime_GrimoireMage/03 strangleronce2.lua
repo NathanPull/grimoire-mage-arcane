@@ -1,6 +1,6 @@
 Guidelime.registerGuide([[
 [N34-37 Strangleronce, deuxième série]
-[NX36-40 Rives Claires, partie 1]
+[NX37-40 Rives Claires, partie 1 : le sud et le centre]
 [D Grimoire du Mage Arcane \\ La zone la plus riche de ta tranche : 26 quêtes Alliance entre 34 et 37. Tu finis les séries de Nesingwary, les chaînes du camp rebelle et celles de Baie-du-Butin. Baie-du-Butin est neutre et gardée, mais la route qui y mène passe près de Grom'gol : avance prudemment. \\ Y aller : Tu es déjà sur place. Prends le point de vol de Baie-du-Butin (neutre) tout au sud dès ton premier passage. Pour descendre au sud, suis la route principale et contourne Grom'gol (camp Horde) par l'est. \\ Détails et carte : nathanpull.github.io/grimoire-mage-arcane]
 [GA Alliance]
 Va à Camp de Nesingwary [G35.6,10.6 Stranglethorn Vale]

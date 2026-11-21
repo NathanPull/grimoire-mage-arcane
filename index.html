@@ -712,9 +712,9 @@ function exactHTML(st){
     return '<tr class="'+(ok?'ok':'')+(high?' high':'')+(low?' low':'')+'"><td><input type="checkbox" data-xq="'+q.id+'"'+(ok?' checked':'')+' aria-label="Faite"></td><td class="lv">'+q.lvl+'</td><td><b>'+esc(q.fr)+'</b>'+(q.fr!==q.en?' <span class="en">('+esc(q.en)+')</span>':'')+(q.obj?'<div class="obj">'+esc(q.obj)+'</div>':'')+(pre.length?'<div class="pre">Suite de : '+esc(pre.join(', '))+'</div>':'')+'</td><td>'+esc(q.giver)+'<br>'+pos+'</td></tr>';}).join('');
   var n=list.filter(function(q){return qdone['q'+q.id];}).length;
   return '<div class="panel"><h2>Toutes les quêtes Alliance de la zone <span class="cnt2">'+n+'/'+list.length+'</span></h2>'+
-    '<div class="muted small" style="margin-bottom:8px">Liste exacte tirée de la base de données de Questie pour Forever : noms français, niveau, PNJ et position du donneur. Les quêtes trop hautes pour ton niveau sont grisées en orange, les grises sont pâlies. Coche ce que tu as rendu.</div>'+
+    '<div class="muted small" style="margin-bottom:8px">Liste exacte des quêtes : niveau, PNJ et position du donneur. Les quêtes trop hautes pour ton niveau sont grisées en orange, les grises sont pâlies. Coche ce que tu as rendu.</div>'+
     '<div class="tscroll"><table class="xq"><tr><th></th><th>Niv.</th><th>Quête</th><th>Donneur</th></tr>'+rows+'</table></div>'+
-    '<div class="src">Source : <a href="https://github.com/Questie/QuestieDB" target="_blank" rel="noopener">QuestieDB (Forever)</a>. Les quêtes des zones nouvelles n\'y sont pas encore.</div></div>';
+    '<div class="src">Source : '+((QDATA.srcs&&QDATA.srcs[z[0]])||'<a href="https://github.com/Questie/QuestieDB" target="_blank" rel="noopener">QuestieDB (Forever)</a>.')+'</div></div>';
 }
 
 /* ---------- Page d'étape (réutilisée par « Mon niveau ») ---------- */

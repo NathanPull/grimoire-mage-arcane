@@ -600,3 +600,74 @@ window.LEVELS=[
  [60,"hyjal","Mont Hyjal"]
 ];
 })();
+
+/* ===== Révision du 21 nov. : Rives Claires quête par quête (WispXP + chaînes QuestieDB + ConquestCapped) ===== */
+(function(){
+var S={}; window.STEPS.forEach(function(s){S[s.id]=s;});
+function set(id,o){Object.keys(o).forEach(function(k){S[id][k]=o[k];});}
+var SRC={kind:"zone",name:"WispXP (liste des quêtes), ConquestCapped (hubs et conseils), QuestieDB (chaînes)",url:"https://wispxp.com/zones/riverglades"};
+set("strangleronce2",{lv:[34,37],ensuite:"Rives Claires vers 37 : vole au Comté-du-Lac et prends la route du nord."});
+set("rives1",{lv:[37,40],title:"Rives Claires, partie 1 : le sud et le centre",src:SRC,tags:[["new","Nouvelle zone"],["pvp","Contestée"]],
+ intro:"78 quêtes Alliance et 10 neutres, la plus grosse zone de ta route. Arrive vers 37 : presque tout est niveau 38, ça passe très bien. Cette première partie fait le fort, les fermes, le camp de bûcherons et la tour de guet, puis tu rentres en ville au 40. Les noms restent en anglais parce que la traduction française n'est pas encore publiée.",
+ acces:["Vole au Comté-du-Lac (Les Carmines) et prends la route au nord de la zone.","À la fourche avec le panneau « Riverglades », prends à droite et suis la route jusqu'au sud de la zone.","Prends le point de vol de Fort-Lointain chez Gretchen Mayberry (60.6, 81.6), il te servira tout le temps.","Autre entrée possible par la route au sud des Terres ingrates."],
+ avant:["Achète ou fabrique 8 Pierres à aiguiser solides (Solid Sharpening Stone) à l'hôtel des ventes : elles servent pour <b>The Sharpest of Blades</b> et sont dures à trouver sur place.","Optionnel : si tu passes en Arathi, prends <b>The Riverglades Report</b> chez le capitaine Nials au Refuge de l'Ornière. Elle se rend à Demar Brant."],
+ quetes:[
+  "Fort-Lointain, Demar Brant (66.7, 81.0) : prends <b>My Kingdom for a Horse</b> et <b>Saving Sunnyglade</b> (niveau 40, garde-la pour la partie 2).",
+  "Ashe Amberhall (66.8, 81.1) : prends <b>Curious Trinkets</b> et <b>Scraps of Knowledge</b>.",
+  "Ember Bladewhisper (66.2, 79.6) : prends <b>Stuff 'Em and Stick 'Em</b>, et rends tout de suite la suite <b>The Sharpest of Blades</b> si tu as tes 8 pierres.",
+  "Bertrand Ironbrow (63.4, 80.6) : prends <b>Foreman's Plight</b>. Cassandra Wheeler (64.7, 82.9) : prends <b>Love Thy Neighbor</b>.",
+  "Chapelle, Sœur Rowland (61.8, 83.1) : prends <b>Bats in the Belfry</b>, fais-la dans le clocher, puis enchaîne <b>Keeping the Light On</b> et <b>In Memoriam</b>.",
+  "Ferme des Charron, Benjy Charron (54.9, 73.0) : rends <b>My Kingdom for a Horse</b> et <b>Love Thy Neighbor</b>, prends <b>Foal Play</b> et <b>Freshwater Fiends</b>.",
+  "Rends <b>Foal Play</b>, puis prends <b>Coyote Huntin'</b> et l'escorte <b>Wheeler's Fleeing Steeds</b>. Si quelqu'un fait déjà l'escorte, attends quelques minutes.",
+  "Après l'escorte, trouve le cheval perdu (53.7, 66.4) pour <b>Rescue Roundup</b>. Tue coyotes et monstres des rivières en chemin pour <b>Coyote Huntin'</b> et <b>Freshwater Fiends</b>, puis rends tout à Benjy.",
+  "Guet du Sud, Robbie Holmsby (43.3, 82.7) : prends <b>Eyes for the Watchman</b> et <b>Hats Off</b>. Cedric Dalton (39.6, 74.7) : prends <b>Gnoll Infestation</b>.",
+  "Va voir l'éclaireur Bolain à l'ouest (23.7, 67.8) pour <b>The Lost Scout</b>, puis rapporte <b>Southern Watch Gnoll Report</b> à Cedric. Fais les gnolls, les yeux et les chapeaux d'un seul passage.",
+  "Camp de bûcherons de Turner, Halligan Turner (41.2, 62.9) : prends <b>Unsavory Plant Food</b> et <b>Stolen Saws</b>. Curly (46.1, 71.0) : prends <b>If a Tree Falls, and No One Hears...</b>.",
+  "Rends le tout à Halligan, puis fais <b>From Seed to Sprout</b> et <b>Helping Hands</b> autour du camp.",
+  "Guet de Terral, Watcher Cornelius (59.5, 64.0) : prends <b>A Fur Trade</b> et <b>Hunting the Hunters</b>. Ramasse la carcasse (61.6, 58.8) pour <b>A Feast for Buzzards</b>.",
+  "Rends <b>Hunting the Hunters</b>, puis fais <b>Preventative Measures</b> et <b>Rog'mar Supplies</b> ensemble et rends <b>The Rog'mar Situation</b>. Attention, Rog'mar est le camp Horde (59.4, 45).",
+  "Prends <b>Song of the Strider</b> mais ne la farme pas : l'objet est très rare. Laisse-la tourner pendant le reste de la zone.",
+  "Retour au fort : rends <b>Foreman's Plight</b> et fais <b>High Stakes</b>, rends les quêtes de la chapelle et prends le reste. Au niveau 40, pierre de foyer pour la ville."
+ ],
+ danger:["Rog'mar (59.4, 45) : camp Horde, gardes et joueurs. Reste au sud de la route.","Rivières : monstres d'eau en groupe, ne te bats pas en nageant.","Avis de recherche du fort (Kaijo, Ghostmaw) : élites 42, pas maintenant."],
+ elites:[["Snargl's Snout (40 élite)","Chez Cedric, à deux ou plus tard."],["King of the Wild Plains (41 élite)","Fin de la chaîne du strider, en groupe."],["WANTED: Blademaster Kaijo (42 élite)","En groupe."],["WANTED: Ghostmaw (42 élite)","En groupe."]],
+ skip:["<b>Snargl's Snout</b>, <b>King of the Wild Plains</b> et les deux avis de recherche si tu es seul."],
+ ensuite:"En ville au niveau 40, puis retour par le point de vol de Fort-Lointain."
+});
+set("rives2",{lv:[40,44],title:"Rives Claires, partie 2 : Sunnyglade, le port et le front ouest",src:SRC,tags:[["new","Nouvelle zone"],["dj","Donjon"],["pvp","Contestée"]],
+ intro:"Tu reviens avec ta monture. Sunnyglade débloque une grosse chaîne au fort, Powderfuse Port en a une autre, et le front ouest finit la zone vers 44. Le Bastion Krol'dok se fait en groupe si tu en trouves un.",
+ acces:["Point de vol de Fort-Lointain (60.6, 81.6)."],
+ quetes:[
+  "Sunnyglade, fermier Elbrim (52.8, 42.4) : fais <b>What We Lost</b> puis <b>All That's Left</b>.",
+  "Apprentie Claire, dans la cave (47.7, 47.3) : prends <b>Abominable Magics</b> et <b>Indiscriminate Purge</b>, fais-les ensemble. La suite <b>Cut Off the Heads</b> est élite.",
+  "Fuzzle (47.3, 51.4), une gobeline neutre : prends sa chaîne <b>Biting the Hand</b> si elle est dispo.",
+  "Retour au fort : rends <b>Saving Sunnyglade</b> à Demar Brant, puis prends <b>Out in the Field</b>, <b>Apple of My Eye</b> (Tessa, 63.9, 82.2) et <b>Wound Dressings</b> (frère Lowley, 65.5, 79.0).",
+  "Enchaîne la chaîne de Lowley et Rowland : <b>Doctor's Orderly</b>, <b>Clerical Quarantine</b>, <b>Something's in the Water</b>. La dernière, <b>Upstream Contamination</b>, est élite.",
+  "Enchaîne la chaîne de Tessa : <b>Fit for a Princess</b> puis <b>Stepped Out</b>, qui t'envoie au port.",
+  "Powderfuse Port (78, 53), aubergiste Zizplink (78.8, 54.0) : <b>Goes Down Smooth</b>, <b>Drink Up!</b>, puis <b>Her World</b> chez Gray Dawnbright (78.8, 54.2).",
+  "Au port, prends aussi <b>Not My Circus</b> (76.0, 52.6), <b>A Taste of the Sea</b> (79.0, 54.2), <b>Saltwater Savages</b> et <b>Unfriendly Competition</b> (Whizzbuzz, 79.5, 52.7). Fais-les sur la côte en un seul tour.",
+  "Rends <b>A Few Furs for Friz</b> à Friz Frazzlespark (77.1, 52.9) et suis la chaîne des contrebandiers, <b>Smuggler's Special</b> et <b>I Know a Guy</b>, tant qu'elle reste dans la zone.",
+  "Retour chez Cornelius (59.5, 64.0) : <b>In Need of Relief</b>, puis va au camp ogre Bolder'ok au nord pour Dunston Willis (68.6, 12.7) : <b>An Ogre's Captive</b> et l'escorte <b>Dunston Checks Out</b>. Nettoie le camp avant de lancer l'escorte.",
+  "Rends <b>Scraps of Knowledge</b>, prends <b>The Western Front</b> et va voir le sergent Faillan (30.7, 49.1) : <b>A Miner Problem</b>, <b>Carving a Path</b>, <b>No Soldier Left Behind</b>.",
+  "Le Voile du Crépuscule est plein d'ogres élites 45 et le cimetière est loin : fais ces trois quêtes sur les bords, à deux si possible.",
+  "Bastion Krol'dok (entrée vers 37.5, 37.5), en groupe : prends avant <b>Twilight Mementos</b> (Faillan), <b>Tome of Twilight</b> (Ashe, après <b>A Small Favor</b>) et <b>Eye of Mugg</b> (Brant). Le <b>Field Marshal's Log</b> qui tombe dedans lance la chaîne du maréchal Ryan.",
+  "Vers 44, rends tout, prends <b>From Port to Port</b> chez Friz et monte sur le bateau de Powderfuse Port pour Tanaris."
+ ],
+ danger:["Voile du Crépuscule (vers 30, 45) : ogres élites 45, grosses frappes, cimetière loin.","Camp Bolder'ok au nord : ogres et joueurs Horde, qui peuvent tuer Dunston pendant l'escorte.","Powderfuse Port est neutre : les joueurs Horde y passent aussi."],
+ elites:[["Cut Off the Heads (41 élite)","À deux."],["Upstream Contamination (42 élite)","À deux, récompense une Superior Healing Potion."],["Bring Me His Head (46 élite)","En groupe, fin de la chaîne de Faillan."],["Hail the Dragonslayer (43 élite)","En groupe."],["Drop the Hammer (45 élite)","En groupe."]],
+ skip:["Les chaînes élites et la fin de la chaîne de Faillan (<b>Bring Me His Head</b>, <b>News to Farholde</b>, <b>The Twilight Threat</b>) si tu es seul : elles sont 45-46."],
+ ensuite:"Tanaris par le bateau de Powderfuse Port, vers 44."
+});
+window.MAPS.rives1={schema:"rives",pins:[[60.6,81.6,"Fort-Lointain, point de vol","hub"],[66.7,81.0,"Demar Brant et Ashe Amberhall","poi"],[54.9,73.0,"Ferme des Charron","poi"],[39.6,74.7,"Guet du Sud","poi"],[41.2,62.9,"Camp de bûcherons de Turner","poi"],[59.5,64.0,"Guet de Terral (Cornelius)","poi"],[59.4,45,"Rog'mar (Horde)","danger"]]};
+window.MAPS.rives2={schema:"rives",pins:[[60.6,81.6,"Fort-Lointain, point de vol","hub"],[52.8,42.4,"Sunnyglade","poi"],[78,53,"Powderfuse Port (bateau pour Tanaris)","poi"],[30.7,49.1,"Sergent Faillan, front ouest","poi"],[37.5,37.5,"Bastion Krol'dok (donjon)","danger"],[68.6,12.7,"Camp Bolder'ok, Dunston","danger"],[59.4,45,"Rog'mar (Horde)","danger"]]};
+window.QZ.rives1=["riverglades",36,40]; window.QZ.rives2=["riverglades",40,47];
+window.LEVELS.forEach(function(r){
+ if(r[0]===36){r[1]="strangleronce2";r[2]="Strangleronce : fin de la deuxième série, Baie-du-Butin";r[3]="badlands";}
+ if(r[0]===37){r[1]="rives1";r[2]="Rives Claires : Fort-Lointain, ferme des Charron";r[3]="arathi1";}
+ if(r[0]===38){r[1]="rives1";r[2]="Rives Claires : Guet du Sud, camp de Turner";r[3]="badlands";}
+ if(r[0]===39){r[1]="rives1";r[2]="Rives Claires : Guet de Terral, Rog'mar";r[3]="arathi2";}
+ if(r[0]===41){r[1]="rives2";r[2]="Rives Claires : Sunnyglade et chaînes du fort";r[3]="strangleronce3";}
+ if(r[0]===42){r[1]="rives2";r[2]="Rives Claires : Powderfuse Port, Dunston";r[3]="strangleronce3";}
+ if(r[0]===43){r[1]="rives2";r[2]="Rives Claires : front ouest, Bastion Krol'dok";r[3]="strangleronce3";}
+});
+})();
